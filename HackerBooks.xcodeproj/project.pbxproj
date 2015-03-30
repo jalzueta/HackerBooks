@@ -12,6 +12,7 @@
 		59FDD5A61AC99B5B0062037B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59FDD5A51AC99B5B0062037B /* Images.xcassets */; };
 		59FDD5A91AC99B5B0062037B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59FDD5A71AC99B5B0062037B /* LaunchScreen.xib */; };
 		59FDD5B51AC99B5B0062037B /* HackerBooksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5B41AC99B5B0062037B /* HackerBooksTests.m */; };
+		59FDD5C21AC99F2D0062037B /* FLGBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5C11AC99F2D0062037B /* FLGBook.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,9 @@
 		59FDD5AE1AC99B5B0062037B /* HackerBooksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackerBooksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59FDD5B31AC99B5B0062037B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59FDD5B41AC99B5B0062037B /* HackerBooksTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HackerBooksTests.m; sourceTree = "<group>"; };
+		59FDD5BE1AC99F010062037B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		59FDD5C01AC99F2D0062037B /* FLGBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGBook.h; sourceTree = "<group>"; };
+		59FDD5C11AC99F2D0062037B /* FLGBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGBook.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 			children = (
 				59FDD5A21AC99B5B0062037B /* AppDelegate.h */,
 				59FDD5A31AC99B5B0062037B /* AppDelegate.m */,
+				59FDD5BF1AC99F090062037B /* Settings */,
+				59FDD5C31AC99F320062037B /* Models */,
 				59FDD5A51AC99B5B0062037B /* Images.xcassets */,
 				59FDD5A71AC99B5B0062037B /* LaunchScreen.xib */,
 				59FDD59E1AC99B5B0062037B /* Supporting Files */,
@@ -109,6 +115,23 @@
 				59FDD5B31AC99B5B0062037B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		59FDD5BF1AC99F090062037B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				59FDD5BE1AC99F010062037B /* Constants.h */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		59FDD5C31AC99F320062037B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				59FDD5C01AC99F2D0062037B /* FLGBook.h */,
+				59FDD5C11AC99F2D0062037B /* FLGBook.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +178,7 @@
 		59FDD5931AC99B5B0062037B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = FLG;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = FillinGAPPs;
 				TargetAttributes = {
@@ -212,6 +236,7 @@
 			files = (
 				59FDD5A41AC99B5B0062037B /* AppDelegate.m in Sources */,
 				59FDD5A11AC99B5B0062037B /* main.m in Sources */,
+				59FDD5C21AC99F2D0062037B /* FLGBook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,9 +13,13 @@
 @implementation FLGJSONDict2BookParser
 
 + (FLGBook *) bookFromJSONDict: (NSDictionary *) dict{
+    
+    NSArray *authorsArray = [[dict objectForKey:AUTHORS_KEY] componentsSeparatedByString: @", "];
+    NSArray *tagsArray = [[dict objectForKey:TAGS_KEY] componentsSeparatedByString: @", "];
+    
     return [[FLGBook alloc]initWithTitle: [dict objectForKey:TITLE_KEY]
-                                 authors: [dict objectForKey:AUTHORS_KEY]
-                                    tags: [dict objectForKey:TAGS_KEY]
+                                 authors: authorsArray
+                                    tags: tagsArray
                                 imageURL: [dict objectForKey:IMAGE_URL_KEY]
                                   pdfURL: [dict objectForKey:PDF_URL_KEY]];
 }

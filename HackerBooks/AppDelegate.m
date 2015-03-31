@@ -10,6 +10,8 @@
 #import "FLGConstants.h"
 #import "FLGBookJSONDownloader.h"
 #import "FLGLibrary.h"
+#import "FLGLibraryTableViewController.h"
+#import "FLGConstants.h"
 
 @interface AppDelegate ()
 
@@ -21,10 +23,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    FLGBookJSONDownloader *bookDownloader = [[FLGBookJSONDownloader alloc] initWithURL:[NSURL URLWithString:JSON_DOWNLOAD_URL]];
+//    FLGBookJSONDownloader *bookDownloader = [[FLGBookJSONDownloader alloc] initWithURL:[NSURL URLWithString:JSON_DOWNLOAD_URL]];
     
-    FLGLibrary *library = [[FLGLibrary alloc] initWithArrayOfBooks:[bookDownloader booksArray]];
+    // Creo el modelo
     
+    NSData *booksData = [NSData dataWithContentsOfURL:[NSURL URLWithString:JSON_DOWNLOAD_URL]];
+    FLGLibrary *library = [[FLGLibrary alloc] initWithData:booksData error:nil];
+    
+    // Creo los controladores
+    FLGLibraryTableViewController *libraryVC = [[FLGLibraryTableViewController alloc] initWithModel:library style:UITableViewStyleGrouped];
+    
+    // Creo los navigation controller
+    UINavigationController *libraryNC = [[UINavigationController alloc] initWithRootViewController:libraryVC];
+    
+    // Mostramos el controlador
+    self.window.rootViewController = libraryNC;
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

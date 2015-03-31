@@ -16,3 +16,6 @@
 #define TAGS_KEY @"tags"
 #define TITLE_KEY @"title"
 
+#pragma mark - FLGLibrary
+#define FAVOURITES_TAG @"Favourites"
+

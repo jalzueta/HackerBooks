@@ -97,7 +97,7 @@
 				59FDD5BF1AC99F090062037B /* Settings */,
 				59FDD5D11ACA97180062037B /* Controllers */,
 				59FDD5C31AC99F320062037B /* Models */,
-				59FDD5CD1ACA87610062037B /* Parsers */,
+				59FDD5D21ACAA5FE0062037B /* Utils */,
 				59FDD5A51AC99B5B0062037B /* Images.xcassets */,
 				59FDD5A71AC99B5B0062037B /* LaunchScreen.xib */,
 				59FDD59E1AC99B5B0062037B /* Supporting Files */,
@@ -146,8 +146,6 @@
 				59FDD5C11AC99F2D0062037B /* FLGBook.m */,
 				59FDD5C41AC9A0ED0062037B /* FLGLibrary.h */,
 				59FDD5C51AC9A0ED0062037B /* FLGLibrary.m */,
-				59FDD5C71ACA7F5A0062037B /* FLGBookJSONDownloader.h */,
-				59FDD5C81ACA7F5A0062037B /* FLGBookJSONDownloader.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -168,6 +166,16 @@
 				59FDD5CF1ACA97150062037B /* FLGLibraryTableViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		59FDD5D21ACAA5FE0062037B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				59FDD5CD1ACA87610062037B /* Parsers */,
+				59FDD5C71ACA7F5A0062037B /* FLGBookJSONDownloader.h */,
+				59FDD5C81ACA7F5A0062037B /* FLGBookJSONDownloader.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,6 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HackerBooks/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -403,6 +412,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HackerBooks/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

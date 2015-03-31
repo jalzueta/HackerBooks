@@ -10,7 +10,8 @@
 
 @interface FLGBookJSONDownloader : NSObject
 
-@property (strong, nonatomic) NSMutableArray *booksArray;
+@property (strong, nonatomic) NSData *booksJSONData;
+@property (strong, nonatomic) NSError *error;
 
 // Init personalizado
 - (id) initWithURL: (NSURL *) url;

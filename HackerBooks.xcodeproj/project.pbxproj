@@ -13,6 +13,10 @@
 		59FDD5A91AC99B5B0062037B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59FDD5A71AC99B5B0062037B /* LaunchScreen.xib */; };
 		59FDD5B51AC99B5B0062037B /* HackerBooksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5B41AC99B5B0062037B /* HackerBooksTests.m */; };
 		59FDD5C21AC99F2D0062037B /* FLGBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5C11AC99F2D0062037B /* FLGBook.m */; };
+		59FDD5C61AC9A0ED0062037B /* FLGLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5C51AC9A0ED0062037B /* FLGLibrary.m */; };
+		59FDD5C91ACA7F5A0062037B /* FLGBookJSONDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5C81ACA7F5A0062037B /* FLGBookJSONDownloader.m */; };
+		59FDD5CC1ACA82C60062037B /* FLGJSONDict2BookParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5CB1ACA82C60062037B /* FLGJSONDict2BookParser.m */; };
+		59FDD5D01ACA97150062037B /* FLGLibraryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5CF1ACA97150062037B /* FLGLibraryTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,9 +40,17 @@
 		59FDD5AE1AC99B5B0062037B /* HackerBooksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HackerBooksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59FDD5B31AC99B5B0062037B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59FDD5B41AC99B5B0062037B /* HackerBooksTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HackerBooksTests.m; sourceTree = "<group>"; };
-		59FDD5BE1AC99F010062037B /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		59FDD5BE1AC99F010062037B /* FLGConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FLGConstants.h; sourceTree = "<group>"; };
 		59FDD5C01AC99F2D0062037B /* FLGBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGBook.h; sourceTree = "<group>"; };
 		59FDD5C11AC99F2D0062037B /* FLGBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGBook.m; sourceTree = "<group>"; };
+		59FDD5C41AC9A0ED0062037B /* FLGLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGLibrary.h; sourceTree = "<group>"; };
+		59FDD5C51AC9A0ED0062037B /* FLGLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGLibrary.m; sourceTree = "<group>"; };
+		59FDD5C71ACA7F5A0062037B /* FLGBookJSONDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGBookJSONDownloader.h; sourceTree = "<group>"; };
+		59FDD5C81ACA7F5A0062037B /* FLGBookJSONDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGBookJSONDownloader.m; sourceTree = "<group>"; };
+		59FDD5CA1ACA82C60062037B /* FLGJSONDict2BookParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGJSONDict2BookParser.h; sourceTree = "<group>"; };
+		59FDD5CB1ACA82C60062037B /* FLGJSONDict2BookParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGJSONDict2BookParser.m; sourceTree = "<group>"; };
+		59FDD5CE1ACA97150062037B /* FLGLibraryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGLibraryTableViewController.h; sourceTree = "<group>"; };
+		59FDD5CF1ACA97150062037B /* FLGLibraryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGLibraryTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +95,9 @@
 				59FDD5A21AC99B5B0062037B /* AppDelegate.h */,
 				59FDD5A31AC99B5B0062037B /* AppDelegate.m */,
 				59FDD5BF1AC99F090062037B /* Settings */,
+				59FDD5D11ACA97180062037B /* Controllers */,
 				59FDD5C31AC99F320062037B /* Models */,
+				59FDD5CD1ACA87610062037B /* Parsers */,
 				59FDD5A51AC99B5B0062037B /* Images.xcassets */,
 				59FDD5A71AC99B5B0062037B /* LaunchScreen.xib */,
 				59FDD59E1AC99B5B0062037B /* Supporting Files */,
@@ -120,7 +134,7 @@
 		59FDD5BF1AC99F090062037B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				59FDD5BE1AC99F010062037B /* Constants.h */,
+				59FDD5BE1AC99F010062037B /* FLGConstants.h */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -130,8 +144,30 @@
 			children = (
 				59FDD5C01AC99F2D0062037B /* FLGBook.h */,
 				59FDD5C11AC99F2D0062037B /* FLGBook.m */,
+				59FDD5C41AC9A0ED0062037B /* FLGLibrary.h */,
+				59FDD5C51AC9A0ED0062037B /* FLGLibrary.m */,
+				59FDD5C71ACA7F5A0062037B /* FLGBookJSONDownloader.h */,
+				59FDD5C81ACA7F5A0062037B /* FLGBookJSONDownloader.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		59FDD5CD1ACA87610062037B /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				59FDD5CA1ACA82C60062037B /* FLGJSONDict2BookParser.h */,
+				59FDD5CB1ACA82C60062037B /* FLGJSONDict2BookParser.m */,
+			);
+			name = Parsers;
+			sourceTree = "<group>";
+		};
+		59FDD5D11ACA97180062037B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				59FDD5CE1ACA97150062037B /* FLGLibraryTableViewController.h */,
+				59FDD5CF1ACA97150062037B /* FLGLibraryTableViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,7 +271,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				59FDD5A41AC99B5B0062037B /* AppDelegate.m in Sources */,
+				59FDD5C61AC9A0ED0062037B /* FLGLibrary.m in Sources */,
 				59FDD5A11AC99B5B0062037B /* main.m in Sources */,
+				59FDD5D01ACA97150062037B /* FLGLibraryTableViewController.m in Sources */,
+				59FDD5CC1ACA82C60062037B /* FLGJSONDict2BookParser.m in Sources */,
+				59FDD5C91ACA7F5A0062037B /* FLGBookJSONDownloader.m in Sources */,
 				59FDD5C21AC99F2D0062037B /* FLGBook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

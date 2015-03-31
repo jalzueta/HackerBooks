@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "FLGConstants.h"
+#import "FLGBookJSONDownloader.h"
+#import "FLGLibrary.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +20,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    FLGBookJSONDownloader *bookDownloader = [[FLGBookJSONDownloader alloc] initWithURL:[NSURL URLWithString:JSON_DOWNLOAD_URL]];
+    
+    FLGLibrary *library = [[FLGLibrary alloc] initWithArrayOfBooks:[bookDownloader booksArray]];
+    
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

@@ -126,3 +126,25 @@ Podfile.lock
 # UNKNOWN: recommended by others, but I can't discover what these files are
 #
 # ...none. Everything is now explained.
+
+#From Lorem Solutions
+# Xcode
+.DS_Store
+*/build/*
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+profile
+*.moved-aside
+DerivedData
+.idea/
+*.hmap
+/HackerBooks.xcodeproj/project.xcworkspace/xcshareddata/
+/HackerBooks.xcodeproj/xcshareddata/
+/HackerBooks.xcodeproj/project.xcworkspace/xcuserdata

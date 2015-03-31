@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 FillinGAPPs. All rights reserved.
 //
 
-#pragma mark - FLGBook JSON download
+#pragma mark - FLGBook JSON download/save
 #define JSON_DOWNLOAD_URL @"https://t.co/K9ziV0z3SJ"
+#define IS_SAVED_JSON_DATA_KEY @"isSavedBooksJson"
+#define JSON_FILENAME @"booksJsonData.txt"
 
 #pragma mark - FLGBook JSON parser
 #define AUTHORS_KEY @"authors"

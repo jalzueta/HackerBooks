@@ -84,24 +84,29 @@
     NSMutableArray *booksArrayMutable = [[NSMutableArray alloc] init];
     if (booksJSONData != nil) {
         //No ha habido error
-        
-        NSArray *JSONObjects = [NSJSONSerialization JSONObjectWithData:booksJSONData
-                                                               options:kNilOptions
-                                                                 error:&error];
-        if (JSONObjects != nil) {
-            //No ha habido error
-            for (NSDictionary *dict in JSONObjects) {
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:booksJSONData
+                                                        options:kNilOptions
+                                                          error:&error];
+        if (jsonObject != nil) {
+            // No ha habido error al parsear el JSON
+            // comprueba si tenemos un array
+            if ([jsonObject isKindOfClass:[NSArray class]]) {
+                NSArray *JSONObjects = (NSArray *) jsonObject;
+                for (NSDictionary *dict in JSONObjects) {
+                    [booksArrayMutable addObject:[FLGJSONDict2BookParser bookFromJSONDict:dict]];
+                }
+            }else{
+                NSDictionary *dict = (NSDictionary *) jsonObject;
                 [booksArrayMutable addObject:[FLGJSONDict2BookParser bookFromJSONDict:dict]];
             }
-        }
-        else{
-            //Se ha producido un error al parsear ael JSON
+        }else{
+            // Se ha producido un error al parsear el JSON
             NSLog(@"Error al parsear JSON: %@", error.localizedDescription);
         }
     }
     else{
         //Se ha producido un error al parsear ael JSON
-        NSLog(@"Error al parsear JSON: %@", error.localizedDescription);
+        NSLog(@"Error al descargar JSON: %@", error.localizedDescription);
     }
     
     return booksArrayMutable;

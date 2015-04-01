@@ -21,3 +21,10 @@
 #pragma mark - FLGLibrary
 #define FAVOURITES_TAG @"Favourites"
 
+#pragma mark - Notifications
+#define BOOK_DID_CHANGE_NOTIFICATION_NAME @"bookDidChange"
+#define BOOK_KEY @"book"
+
+#pragma mark - NSUserDefaults
+#define LAST_SELECTED_BOOK @"lastBook"
+

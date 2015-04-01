@@ -17,7 +17,7 @@
 @property (nonatomic, readonly) NSUInteger booksCount;
 
 // Inicializador personalizado
-- (id) initWithData: (NSData *) booksJSONData error: (NSError *) error;
+- (id) initWithJsonData: (NSData *) jsonData error: (NSError *) error;
 
 // metodos accesores para los elementos del modelo
 - (NSUInteger) tagsCount;

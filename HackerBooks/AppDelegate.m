@@ -12,6 +12,7 @@
 #import "FLGLibraryTableViewController.h"
 #import "FLGConstants.h"
 #import "FLGSandboxUtils.h"
+#import "FLGBookViewController.h"
 
 @interface AppDelegate ()
 
@@ -44,16 +45,10 @@
     }
     
     // Creo el modelo con los datos obtenidos (server/local)
-    FLGLibrary *library = [[FLGLibrary alloc] initWithData:booksData error:nil];
+    FLGLibrary *library = [[FLGLibrary alloc] initWithJsonData:booksData error:nil];
     
-    // Creo los controladores
-    FLGLibraryTableViewController *libraryVC = [[FLGLibraryTableViewController alloc] initWithModel:library style:UITableViewStyleGrouped];
-    
-    // Creo los navigation controller
-    UINavigationController *libraryNC = [[UINavigationController alloc] initWithRootViewController:libraryVC];
-    
-    // Mostramos el controlador
-    self.window.rootViewController = libraryNC;
+    // Tipo tableta
+    [self configureForPadWithModel:library];
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -86,6 +81,47 @@
 
 #pragma mark - Utils
 
+- (void) configureForPadWithModel: (FLGLibrary *) library{
+    
+    // Creamos los controladores
+    FLGLibraryTableViewController *libraryVC = [[FLGLibraryTableViewController alloc] initWithModel:library style:UITableViewStyleGrouped];
+    FLGBookViewController *bookVC = [[FLGBookViewController alloc] initWithModel:[self lastSelectedBookInModel: library]];
+    
+    // Creo los navigationControllers
+    UINavigationController *libraryNavVC = [[UINavigationController alloc] initWithRootViewController:libraryVC];
+    UINavigationController *bookNavVC = [[UINavigationController alloc] initWithRootViewController:bookVC];
+    
+    // Creo el SplitViewController
+    UISplitViewController *spliVC = [[UISplitViewController alloc] init];
+    spliVC.viewControllers = @[libraryNavVC, bookNavVC];
+    
+    // Asignamos delegados
+    spliVC.delegate = bookVC;
+    
+    // Mostramos el controlador en pantalla
+    self.window.rootViewController = spliVC;
+    
+}
+
+- (FLGBook *) lastSelectedBookInModel: (FLGLibrary *) library{
+
+    // Obtengo el NSUserDefaults
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    
+    // Saco las coordenadas del ultimo personaje
+    NSArray *coords = [def objectForKey:LAST_SELECTED_BOOK];
+    NSString *tag = [coords objectAtIndex:0];
+    if (!tag) {
+        tag = [library.tags objectAtIndex:0];
+    }
+    NSUInteger index = [[coords objectAtIndex:1] integerValue];
+    
+    // Obtengo el personaje
+    FLGBook *book = [library bookForTag:tag atIndex:index];
+    
+    // Lo devuelvo
+    return book;
+}
 
 
 @end

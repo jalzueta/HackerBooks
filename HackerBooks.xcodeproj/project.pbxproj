@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5949E6F71ACCAC1A009E2DAB /* FLGPdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5949E6F51ACCAC1A009E2DAB /* FLGPdfViewController.m */; };
+		5949E6F81ACCAC1A009E2DAB /* FLGPdfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5949E6F61ACCAC1A009E2DAB /* FLGPdfViewController.xib */; };
 		5993FCE61ACB71E500273B61 /* FLGSandboxUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5993FCE51ACB71E500273B61 /* FLGSandboxUtils.m */; };
+		5993FCEE1ACC99ED00273B61 /* FLGBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5993FCEC1ACC99ED00273B61 /* FLGBookViewController.m */; };
+		5993FCEF1ACC99ED00273B61 /* FLGBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5993FCED1ACC99ED00273B61 /* FLGBookViewController.xib */; };
 		59FDD5A11AC99B5B0062037B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5A01AC99B5B0062037B /* main.m */; };
 		59FDD5A41AC99B5B0062037B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5A31AC99B5B0062037B /* AppDelegate.m */; };
 		59FDD5A61AC99B5B0062037B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59FDD5A51AC99B5B0062037B /* Images.xcassets */; };
@@ -30,8 +34,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5949E6F41ACCAC1A009E2DAB /* FLGPdfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGPdfViewController.h; sourceTree = "<group>"; };
+		5949E6F51ACCAC1A009E2DAB /* FLGPdfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGPdfViewController.m; sourceTree = "<group>"; };
+		5949E6F61ACCAC1A009E2DAB /* FLGPdfViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLGPdfViewController.xib; sourceTree = "<group>"; };
 		5993FCE41ACB71E500273B61 /* FLGSandboxUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGSandboxUtils.h; sourceTree = "<group>"; };
 		5993FCE51ACB71E500273B61 /* FLGSandboxUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGSandboxUtils.m; sourceTree = "<group>"; };
+		5993FCEB1ACC99ED00273B61 /* FLGBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGBookViewController.h; sourceTree = "<group>"; };
+		5993FCEC1ACC99ED00273B61 /* FLGBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGBookViewController.m; sourceTree = "<group>"; };
+		5993FCED1ACC99ED00273B61 /* FLGBookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLGBookViewController.xib; sourceTree = "<group>"; };
 		59FDD59B1AC99B5B0062037B /* HackerBooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerBooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59FDD59F1AC99B5B0062037B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59FDD5A01AC99B5B0062037B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -155,6 +165,12 @@
 			children = (
 				59FDD5CE1ACA97150062037B /* FLGLibraryTableViewController.h */,
 				59FDD5CF1ACA97150062037B /* FLGLibraryTableViewController.m */,
+				5993FCEB1ACC99ED00273B61 /* FLGBookViewController.h */,
+				5993FCEC1ACC99ED00273B61 /* FLGBookViewController.m */,
+				5993FCED1ACC99ED00273B61 /* FLGBookViewController.xib */,
+				5949E6F41ACCAC1A009E2DAB /* FLGPdfViewController.h */,
+				5949E6F51ACCAC1A009E2DAB /* FLGPdfViewController.m */,
+				5949E6F61ACCAC1A009E2DAB /* FLGPdfViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -253,6 +269,8 @@
 			files = (
 				59FDD5A91AC99B5B0062037B /* LaunchScreen.xib in Resources */,
 				59FDD5A61AC99B5B0062037B /* Images.xcassets in Resources */,
+				5993FCEF1ACC99ED00273B61 /* FLGBookViewController.xib in Resources */,
+				5949E6F81ACCAC1A009E2DAB /* FLGPdfViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +293,8 @@
 				59FDD5A11AC99B5B0062037B /* main.m in Sources */,
 				59FDD5D01ACA97150062037B /* FLGLibraryTableViewController.m in Sources */,
 				5993FCE61ACB71E500273B61 /* FLGSandboxUtils.m in Sources */,
+				5993FCEE1ACC99ED00273B61 /* FLGBookViewController.m in Sources */,
+				5949E6F71ACCAC1A009E2DAB /* FLGPdfViewController.m in Sources */,
 				59FDD5CC1ACA82C60062037B /* FLGJSONUtils.m in Sources */,
 				59FDD5C21AC99F2D0062037B /* FLGBook.m in Sources */,
 			);

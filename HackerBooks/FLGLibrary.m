@@ -14,10 +14,10 @@
 @implementation FLGLibrary
 
 #pragma mark - Inits
-- (id) initWithData: (NSData *) booksJSONData error: (NSError *) error{
+- (id) initWithJsonData: (NSData *) jsonData error: (NSError *) error{
     if (self = [super init]) {
         
-        _booksArray = [FLGJSONUtils booksArrayWithJSONData:booksJSONData];
+        _booksArray = [FLGJSONUtils booksArrayWithJSONData:jsonData];
         
         // Creo un diccionario en el que se guarda un array con todos los libros por cada tag
         NSMutableDictionary *booksForTagDictMutable = [[NSMutableDictionary alloc] init];

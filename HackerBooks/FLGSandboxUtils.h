@@ -16,6 +16,5 @@
 + (NSURL *) urlForJSONDataInSandbox;
 + (void) saveLibraryJson: (NSData *) jsonData;
 + (NSData *) downloadAndSaveLibraryImages: (NSData *) jsonData;
-+ (UIImage *) imageInSandboxForBook: (FLGBook *) book;
 
 @end

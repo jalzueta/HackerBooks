@@ -11,6 +11,7 @@
 #import "FLGLibrary.h"
 #import "FLGLibraryTableViewController.h"
 #import "FLGConstants.h"
+#import "FLGSandboxUtils.h"
 
 @interface AppDelegate ()
 
@@ -22,18 +23,27 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    // Creo el modelo
+    // Compruebo si hay datos guardados en local
     NSData *booksData;
     NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
     if (![def objectForKey:IS_SAVED_JSON_DATA_KEY]) {
         // No hay datos guardados en local
+        
+        // Descargo el JSON del servidor
         booksData = [NSData dataWithContentsOfURL:[NSURL URLWithString:JSON_DOWNLOAD_URL]];
-        [self saveJSONInSandbox:booksData];
+        
+        // Descargo las imagenes y modifico el JSON
+        booksData = [FLGSandboxUtils downloadAndSaveLibraryImages:booksData];
+        
+        // Guardo el JSON actualizado en local
+        [FLGSandboxUtils saveLibraryJson:booksData];
     }else{
         // Sí hay datos guardados en local
-        booksData = [NSData dataWithContentsOfURL:[self urlForJSONDataInSandbox]];
+        // Cojo el JSON de local
+        booksData = [NSData dataWithContentsOfURL:[FLGSandboxUtils urlForJSONDataInSandbox]];
     }
     
+    // Creo el modelo con los datos obtenidos (server/local)
     FLGLibrary *library = [[FLGLibrary alloc] initWithData:booksData error:nil];
     
     // Creo los controladores
@@ -76,35 +86,6 @@
 
 #pragma mark - Utils
 
-- (NSURL *) urlForJSONDataInSandbox{
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSArray *urls = [fm URLsForDirectory:NSDocumentDirectory
-                               inDomains:NSUserDomainMask];
-    NSURL *url = [urls lastObject];
-    
-    // Añadir el componente del nombre del fichero
-    url = [url URLByAppendingPathComponent:JSON_FILENAME];
-    return url;
-}
 
-- (void) saveJSONInSandbox: (NSData *) jsonData{
-    // Averigura la URL a la carpeta Caches
-    NSURL *url = [self urlForJSONDataInSandbox];
-    
-    // Guardar algo
-    NSError *err;
-    BOOL rc = [jsonData writeToURL:url atomically:YES];
-    
-    // Comprobar que se guardó
-    if (rc == NO) {
-        // Hubo error al guardar
-        NSLog( @"Error al guardar: %@", err.userInfo);
-    }else{
-        // No hubo error al guardar
-        NSLog( @"JSON guardado correctamente");
-        NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
-        [def setObject:@"YES" forKey:IS_SAVED_JSON_DATA_KEY];
-    }
-}
 
 @end

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 FillinGAPPs. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 @class FLGBook;
 
 @interface FLGLibrary : NSObject

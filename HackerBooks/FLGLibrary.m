@@ -9,7 +9,7 @@
 #import "FLGLibrary.h"
 #import "FLGBook.h"
 #import "FLGConstants.h"
-#import "FLGJSONDict2BookParser.h"
+#import "FLGJSONUtils.h"
 
 @implementation FLGLibrary
 
@@ -17,7 +17,7 @@
 - (id) initWithData: (NSData *) booksJSONData error: (NSError *) error{
     if (self = [super init]) {
         
-        _booksArray = [self booksArrayWithData:booksJSONData error:error];
+        _booksArray = [FLGJSONUtils booksArrayWithJSONData:booksJSONData];
         
         // Creo un diccionario en el que se guarda un array con todos los libros por cada tag
         NSMutableDictionary *booksForTagDictMutable = [[NSMutableDictionary alloc] init];
@@ -75,42 +75,7 @@
 
 - (FLGBook *) bookForTag: (NSString *) tag atIndex: (NSUInteger) index{
     
-    return [(NSArray *)[self.booksForTagDict objectForKey:tag] objectAtIndex:index];
+    return [[self booksForTag:tag] objectAtIndex:index];
 }
-
-#pragma mark - Utils
-
-- (NSMutableArray *) booksArrayWithData: (NSData *) booksJSONData error: (NSError *) error{
-    NSMutableArray *booksArrayMutable = [[NSMutableArray alloc] init];
-    if (booksJSONData != nil) {
-        //No ha habido error
-        id jsonObject = [NSJSONSerialization JSONObjectWithData:booksJSONData
-                                                        options:kNilOptions
-                                                          error:&error];
-        if (jsonObject != nil) {
-            // No ha habido error al parsear el JSON
-            // comprueba si tenemos un array
-            if ([jsonObject isKindOfClass:[NSArray class]]) {
-                NSArray *JSONObjects = (NSArray *) jsonObject;
-                for (NSDictionary *dict in JSONObjects) {
-                    [booksArrayMutable addObject:[FLGJSONDict2BookParser bookFromJSONDict:dict]];
-                }
-            }else{
-                NSDictionary *dict = (NSDictionary *) jsonObject;
-                [booksArrayMutable addObject:[FLGJSONDict2BookParser bookFromJSONDict:dict]];
-            }
-        }else{
-            // Se ha producido un error al parsear el JSON
-            NSLog(@"Error al parsear JSON: %@", error.localizedDescription);
-        }
-    }
-    else{
-        //Se ha producido un error al parsear ael JSON
-        NSLog(@"Error al descargar JSON: %@", error.localizedDescription);
-    }
-    
-    return booksArrayMutable;
-}
-
 
 @end

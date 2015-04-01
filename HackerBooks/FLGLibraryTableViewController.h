@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 FillinGAPPs. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 @class FLGLibrary;
 
 @interface FLGLibraryTableViewController : UITableViewController

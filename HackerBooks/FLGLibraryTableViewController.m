@@ -9,6 +9,7 @@
 #import "FLGLibraryTableViewController.h"
 #import "FLGLibrary.h"
 #import "FLGBook.h"
+#import "FLGSandboxUtils.h"
 
 @interface FLGLibraryTableViewController ()
 
@@ -67,8 +68,9 @@
     // Sincronizamos modelo (personaje) -> vista (celda)
 //    cell.imageView.image = book.;
     cell.textLabel.text = book.title;
-    cell.detailTextLabel.text = [book.authors componentsJoinedByString:@", "];
-    
+    cell.detailTextLabel.text = [book authorsAsString];
+    cell.imageView.image = [book image];
+
     // Devolverla
     return cell;
 }

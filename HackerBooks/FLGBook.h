@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 FillinGAPPs. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
+@import UIKit;
 
 @interface FLGBook : NSObject
 
@@ -22,5 +23,9 @@
                 tags: (NSArray *) tags
             imageURL: (NSURL *) imageURL
               pdfURL: (NSURL *) pdfURL;
+
+
+- (NSString *) authorsAsString;
+- (UIImage *) image;
 
 @end

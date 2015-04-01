@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5993FCE61ACB71E500273B61 /* FLGSandboxUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5993FCE51ACB71E500273B61 /* FLGSandboxUtils.m */; };
 		59FDD5A11AC99B5B0062037B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5A01AC99B5B0062037B /* main.m */; };
 		59FDD5A41AC99B5B0062037B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5A31AC99B5B0062037B /* AppDelegate.m */; };
 		59FDD5A61AC99B5B0062037B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59FDD5A51AC99B5B0062037B /* Images.xcassets */; };
@@ -14,7 +15,7 @@
 		59FDD5B51AC99B5B0062037B /* HackerBooksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5B41AC99B5B0062037B /* HackerBooksTests.m */; };
 		59FDD5C21AC99F2D0062037B /* FLGBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5C11AC99F2D0062037B /* FLGBook.m */; };
 		59FDD5C61AC9A0ED0062037B /* FLGLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5C51AC9A0ED0062037B /* FLGLibrary.m */; };
-		59FDD5CC1ACA82C60062037B /* FLGJSONDict2BookParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5CB1ACA82C60062037B /* FLGJSONDict2BookParser.m */; };
+		59FDD5CC1ACA82C60062037B /* FLGJSONUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5CB1ACA82C60062037B /* FLGJSONUtils.m */; };
 		59FDD5D01ACA97150062037B /* FLGLibraryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FDD5CF1ACA97150062037B /* FLGLibraryTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5993FCE41ACB71E500273B61 /* FLGSandboxUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGSandboxUtils.h; sourceTree = "<group>"; };
+		5993FCE51ACB71E500273B61 /* FLGSandboxUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGSandboxUtils.m; sourceTree = "<group>"; };
 		59FDD59B1AC99B5B0062037B /* HackerBooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerBooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59FDD59F1AC99B5B0062037B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59FDD5A01AC99B5B0062037B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -44,8 +47,8 @@
 		59FDD5C11AC99F2D0062037B /* FLGBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGBook.m; sourceTree = "<group>"; };
 		59FDD5C41AC9A0ED0062037B /* FLGLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGLibrary.h; sourceTree = "<group>"; };
 		59FDD5C51AC9A0ED0062037B /* FLGLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGLibrary.m; sourceTree = "<group>"; };
-		59FDD5CA1ACA82C60062037B /* FLGJSONDict2BookParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGJSONDict2BookParser.h; sourceTree = "<group>"; };
-		59FDD5CB1ACA82C60062037B /* FLGJSONDict2BookParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGJSONDict2BookParser.m; sourceTree = "<group>"; };
+		59FDD5CA1ACA82C60062037B /* FLGJSONUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGJSONUtils.h; sourceTree = "<group>"; };
+		59FDD5CB1ACA82C60062037B /* FLGJSONUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGJSONUtils.m; sourceTree = "<group>"; };
 		59FDD5CE1ACA97150062037B /* FLGLibraryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGLibraryTableViewController.h; sourceTree = "<group>"; };
 		59FDD5CF1ACA97150062037B /* FLGLibraryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGLibraryTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,8 +162,10 @@
 		59FDD5D21ACAA5FE0062037B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				59FDD5CA1ACA82C60062037B /* FLGJSONDict2BookParser.h */,
-				59FDD5CB1ACA82C60062037B /* FLGJSONDict2BookParser.m */,
+				59FDD5CA1ACA82C60062037B /* FLGJSONUtils.h */,
+				59FDD5CB1ACA82C60062037B /* FLGJSONUtils.m */,
+				5993FCE41ACB71E500273B61 /* FLGSandboxUtils.h */,
+				5993FCE51ACB71E500273B61 /* FLGSandboxUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -269,7 +274,8 @@
 				59FDD5C61AC9A0ED0062037B /* FLGLibrary.m in Sources */,
 				59FDD5A11AC99B5B0062037B /* main.m in Sources */,
 				59FDD5D01ACA97150062037B /* FLGLibraryTableViewController.m in Sources */,
-				59FDD5CC1ACA82C60062037B /* FLGJSONDict2BookParser.m in Sources */,
+				5993FCE61ACB71E500273B61 /* FLGSandboxUtils.m in Sources */,
+				59FDD5CC1ACA82C60062037B /* FLGJSONUtils.m in Sources */,
 				59FDD5C21AC99F2D0062037B /* FLGBook.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

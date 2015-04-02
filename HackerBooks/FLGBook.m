@@ -8,6 +8,7 @@
 
 #import "FLGBook.h"
 #import "FLGSandboxUtils.h"
+#import "FLGConstants.h"
 
 @implementation FLGBook
 
@@ -21,14 +22,16 @@
 //    return nil;
 //}
 
-#pragma mark - Init
+#pragma mark - Properties
 
+#pragma mark - Init
 // designated init
-- (id) initWithTitle:(NSString *)title
-             authors:(NSArray *)authors
-                tags:(NSArray *)tags
-            imageURL:(NSURL *)imageURL
-              pdfURL:(NSURL *)pdfURL{
+- (id) initWithTitle: (NSString *)title
+             authors: (NSArray *) authors
+                tags: (NSArray *) tags
+            imageURL: (NSURL *) imageURL
+              pdfURL: (NSURL *) pdfURL
+        savedInLocal: (BOOL) savedInLocal{
     
     if(self = [super init]){
         _title = title;
@@ -36,8 +39,24 @@
         _tags = tags;
         _imageURL = imageURL;
         _pdfURL = pdfURL;
+        _savedInLocal = savedInLocal;
     }
-    return self;
+    return  self;
+}
+
+- (id) initWithTitle:(NSString *)title
+             authors:(NSArray *)authors
+                tags:(NSArray *)tags
+            imageURL:(NSURL *)imageURL
+              pdfURL:(NSURL *)pdfURL{
+    
+    
+    return [self initWithTitle:title
+                       authors:authors
+                          tags:tags
+                      imageURL:imageURL
+                        pdfURL:pdfURL
+                  savedInLocal:NO];
 }
 
 #pragma mark - Utils
@@ -46,7 +65,7 @@
     return [self.authors componentsJoinedByString:@", "];
 }
 
-- (UIImage *) image{
+- (UIImage *) bookImage{
     
     // Otenemos el nombre del fichero de la imagen en servidor
     NSString *imageFileName = [self.imageURL lastPathComponent];
@@ -56,5 +75,33 @@
     
     return [UIImage imageWithData:[NSData dataWithContentsOfURL:imageURL]];
 }
+
+- (UIImage *) favouriteImage{
+    if (self.isFavourite) {
+        return [UIImage imageNamed:FAVOURITE_ON_IMAGE_NAME];
+    } else{
+        return [UIImage imageNamed:FAVOURITE_OFF_IMAGE_NAME];
+    }
+}
+
+- (void) setIsFavourite: (BOOL) isFavourite{
+    
+    NSMutableArray *tagsMutable = [self.tags mutableCopy];
+    if (isFavourite) {
+        [tagsMutable addObject:FAVOURITES_TAG];
+    }else{
+        [tagsMutable removeObject:FAVOURITES_TAG];
+    }
+    self.tags = tagsMutable;
+}
+
+- (BOOL) isFavourite{
+    return [self.tags containsObject:FAVOURITES_TAG];
+}
+
+- (BOOL) isTheSameBook: (FLGBook *) book{
+    return (self.title == book.title && self.authors == book.authors && self.imageURL == book.imageURL);
+}
+
 
 @end

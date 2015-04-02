@@ -28,3 +28,8 @@
 #pragma mark - NSUserDefaults
 #define LAST_SELECTED_BOOK @"lastBook"
 
+#pragma mark - Book
+#define FAVOURITE_ON_IMAGE_NAME @"favourite_on.png"
+#define FAVOURITE_OFF_IMAGE_NAME @"favourite_off.png"
+
+

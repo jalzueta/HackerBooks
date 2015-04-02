@@ -12,10 +12,6 @@
 #import "FLGPdfViewController.h"
 
 
-@interface FLGBookViewController ()
-
-@end
-
 @implementation FLGBookViewController
 
 #pragma mark - Init
@@ -57,7 +53,9 @@
 - (void) viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
-    
+}
+
+- (void) dealloc{
     // Nos damos de baja de las notificaciones
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self];
@@ -76,6 +74,12 @@
     
     // Hacer un push usando la propiedad "navigationController" que tiene todo UIViewController
     [self.navigationController pushViewController:pdfVC animated:YES];
+}
+
+- (IBAction)didPressFavourite:(id)sender {
+    [self.model setIsFavourite: ![self.model isFavourite]];
+    [self syncFavouriteValue];
+    [self.delegate bookViewController:self didChangeBook:self.model];
 }
 
 #pragma mark - UISplitViewControllerDelegate
@@ -152,8 +156,17 @@
     
     self.bookTitle.text = self.model.title;
     self.authors.text = [self.model authorsAsString];
-    self.bookImage.image = [self.model image];
+    self.bookImage.image = [self.model bookImage];
     [self.tagsTableView reloadData];
+    [self syncFavouriteValue];
+}
+
+- (void) syncFavouriteValue{
+    if (self.model.isFavourite) {
+        self.favouriteImage.image = [UIImage imageNamed:FAVOURITE_ON_IMAGE_NAME];
+    } else{
+        self.favouriteImage.image = [UIImage imageNamed:FAVOURITE_OFF_IMAGE_NAME];
+    }
 }
 
 

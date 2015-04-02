@@ -34,6 +34,9 @@
     // Asegurarse de que no se ocupa toda la pantalla cuando se esta en un combinador
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    // Asigno delegados
+    self.browser.delegate = self;
+    
     // Nos damos de alta en las notificaciones
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self
@@ -41,6 +44,7 @@
                    name:BOOK_DID_CHANGE_NOTIFICATION_NAME
                  object:nil]; // Quien es el sender de la notificacion: en este caso no da igual
     
+    [self configBrowser];
     [self syncViewToModel];
 }
 
@@ -83,6 +87,10 @@
 }
 
 #pragma mark - Utils
+
+- (void) configBrowser{
+    self.browser.scrollView.showsVerticalScrollIndicator = YES;
+}
 
 - (void) syncViewToModel{
     // Sincronizar modelo -> vista

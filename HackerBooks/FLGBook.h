@@ -16,16 +16,27 @@
 @property (strong, nonatomic) NSArray *tags;
 @property (strong, nonatomic) NSURL *imageURL;
 @property (strong, nonatomic) NSURL *pdfURL;
+@property (nonatomic) BOOL isFavourite;
+@property (nonatomic) BOOL savedInLocal;
 
 // designated init
 - (id) initWithTitle: (NSString *)title
              authors: (NSArray *) authors
                 tags: (NSArray *) tags
             imageURL: (NSURL *) imageURL
+              pdfURL: (NSURL *) pdfURL
+        savedInLocal: (BOOL) savedInLocal;
+
+- (id) initWithTitle: (NSString *)title
+             authors: (NSArray *) authors
+                tags: (NSArray *) tags
+            imageURL: (NSURL *) imageURL
               pdfURL: (NSURL *) pdfURL;
 
-
 - (NSString *) authorsAsString;
-- (UIImage *) image;
+- (UIImage *) bookImage;
+- (UIImage *) favouriteImage;
+
+- (BOOL) isTheSameBook: (FLGBook *) book;
 
 @end

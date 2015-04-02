@@ -25,5 +25,7 @@
 - (NSUInteger) bookCountForTag: (NSString *) tag;
 - (NSArray *) booksForTag: (NSString *) tag;
 - (FLGBook *) bookForTag: (NSString *) tag atIndex: (NSUInteger) index;
+
+- (void) updateLibraryWithBook: (FLGBook *) book;
   
 @end

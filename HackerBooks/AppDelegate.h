@@ -7,10 +7,14 @@
 //
 
 @import UIKit;
+@class FLGLibrary;
+@class FLGLibraryTableViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) FLGLibrary *library;
+@property (strong, nonatomic) FLGLibraryTableViewController *libraryVC;
 
 
 @end

@@ -8,13 +8,17 @@
 
 @import UIKit;
 @class FLGLibrary;
+@class FLGBook;
+#import "FLGBookViewController.h"
 
-@interface FLGLibraryTableViewController : UITableViewController
+@interface FLGLibraryTableViewController : UITableViewController<FLGBookViewControllerDelegate>
 
 @property (strong, nonatomic) FLGLibrary *model;
+@property (strong, nonatomic) FLGBook *selectedBook;
 
 // Inicializador designado
 - (id) initWithModel: (FLGLibrary *) model
+        selectedBook: (FLGBook *) selectedBook
                style: (UITableViewStyle) style;
 
 @end

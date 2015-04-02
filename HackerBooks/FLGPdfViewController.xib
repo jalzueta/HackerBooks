@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FLGPdfViewController">
             <connections>
+                <outlet property="activityView" destination="rR2-4R-gUy" id="5zp-jQ-LhC"/>
                 <outlet property="browser" destination="WVc-9j-Hni" id="Uqm-SI-emf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

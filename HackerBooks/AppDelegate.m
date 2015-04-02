@@ -13,6 +13,7 @@
 #import "FLGConstants.h"
 #import "FLGSandboxUtils.h"
 #import "FLGBookViewController.h"
+#import "FLGJSONUtils.h"
 
 @interface AppDelegate ()
 
@@ -45,10 +46,10 @@
     }
     
     // Creo el modelo con los datos obtenidos (server/local)
-    FLGLibrary *library = [[FLGLibrary alloc] initWithJsonData:booksData error:nil];
+    self.library = [[FLGLibrary alloc] initWithJsonData:booksData error:nil];
     
     // Tipo tableta
-    [self configureForPadWithModel:library];
+    [self configureForPadWithModel:self.library];
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -64,6 +65,10 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    // Se guarda el modelo libreria en el Sandbox
+    self.library = self.libraryVC.model;
+    [FLGSandboxUtils saveLibraryJson:[FLGJSONUtils jsonDataWithBooksArray:self.libraryVC.model.booksArray]];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -84,11 +89,15 @@
 - (void) configureForPadWithModel: (FLGLibrary *) library{
     
     // Creamos los controladores
-    FLGLibraryTableViewController *libraryVC = [[FLGLibraryTableViewController alloc] initWithModel:library style:UITableViewStyleGrouped];
-    FLGBookViewController *bookVC = [[FLGBookViewController alloc] initWithModel:[self lastSelectedBookInModel: library]];
+    FLGBook *lastSelectedBook = [self lastSelectedBookInModel: library];
+    self.libraryVC = [[FLGLibraryTableViewController alloc] initWithModel:library
+                                                             selectedBook:lastSelectedBook
+                                                                    style:UITableViewStylePlain];
+    
+    FLGBookViewController *bookVC = [[FLGBookViewController alloc] initWithModel:lastSelectedBook];
     
     // Creo los navigationControllers
-    UINavigationController *libraryNavVC = [[UINavigationController alloc] initWithRootViewController:libraryVC];
+    UINavigationController *libraryNavVC = [[UINavigationController alloc] initWithRootViewController:self.libraryVC];
     UINavigationController *bookNavVC = [[UINavigationController alloc] initWithRootViewController:bookVC];
     
     // Creo el SplitViewController
@@ -97,10 +106,10 @@
     
     // Asignamos delegados
     spliVC.delegate = bookVC;
+    bookVC.delegate = self.libraryVC;
     
     // Mostramos el controlador en pantalla
     self.window.rootViewController = spliVC;
-    
 }
 
 - (FLGBook *) lastSelectedBookInModel: (FLGLibrary *) library{

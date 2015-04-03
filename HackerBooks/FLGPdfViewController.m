@@ -45,6 +45,10 @@
                  object:nil]; // Quien es el sender de la notificacion: en este caso no da igual
     
     [self configBrowser];
+    [self configViewBeforeLoadingPDF];
+}
+
+- (void) viewDidAppear:(BOOL)animated{
     [self syncViewToModel];
 }
 
@@ -92,6 +96,11 @@
     self.browser.scrollView.showsVerticalScrollIndicator = YES;
 }
 
+- (void) configViewBeforeLoadingPDF{
+    [self.activityView setHidden:NO];
+    [self.activityView startAnimating];
+}
+
 - (void) syncViewToModel{
     // Sincronizar modelo -> vista
     self.title = @"PDF";
@@ -100,7 +109,12 @@
     [self.activityView startAnimating];
     
     self.browser.delegate = self;
-    [self.browser loadRequest:[NSURLRequest requestWithURL:self.model.pdfURL]];
+    
+    NSURL *pdfURL = [self.model localPdfURL];
+    [self.browser loadData:[NSData dataWithContentsOfURL:pdfURL]
+                  MIMEType:@"application/pdf"
+          textEncodingName:@"UTF-8"
+                   baseURL:nil];
 }
 
 @end

@@ -22,18 +22,20 @@
     NSArray *tagsArray = [[dict objectForKey:TAGS_KEY] componentsSeparatedByString: @", "];
     NSURL *imageURL = [NSURL URLWithString:[dict objectForKey:IMAGE_URL_KEY]];
     NSURL *pdfURL = [NSURL URLWithString:[dict objectForKey:PDF_URL_KEY]];
+    BOOL savedInLocal = [[dict objectForKey:SAVED_IN_LOCAL_KEY] boolValue];
     
     return [[FLGBook alloc]initWithTitle: titleString
                                  authors: authorsArray
                                     tags: tagsArray
                                 imageURL: imageURL
-                                  pdfURL: pdfURL];
+                                  pdfURL: pdfURL
+                            savedInLocal:savedInLocal];
 }
 
 + (NSDictionary *) jsonDictFromBook: (FLGBook *) book{
     
-    return [[NSDictionary alloc] initWithObjects:@[book.title, [book.authors componentsJoinedByString:@", "], [book.tags componentsJoinedByString:@", "], [book.imageURL absoluteString], [book.pdfURL absoluteString]]
-                                         forKeys:@[TITLE_KEY, AUTHORS_KEY, TAGS_KEY, IMAGE_URL_KEY, PDF_URL_KEY]];
+    return [[NSDictionary alloc] initWithObjects:@[book.title, [book.authors componentsJoinedByString:@", "], [book.tags componentsJoinedByString:@", "], [book.imageURL absoluteString], [book.pdfURL absoluteString], @(book.savedInLocal)]
+                                         forKeys:@[TITLE_KEY, AUTHORS_KEY, TAGS_KEY, IMAGE_URL_KEY, PDF_URL_KEY, SAVED_IN_LOCAL_KEY]];
 }
 
 #pragma mark - booksArray <-> JSONData

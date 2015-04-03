@@ -79,7 +79,15 @@
 - (IBAction)didPressFavourite:(id)sender {
     [self.model setIsFavourite: ![self.model isFavourite]];
     [self syncFavouriteValue];
-    [self.delegate bookViewController:self didChangeBook:self.model];
+    
+    // Mandamos una notificacion -> para avisar a bookViewController y a pdfViewController
+    NSNotification *note = [NSNotification notificationWithName:BOOK_DID_CHANGE_ITS_CONTENT_NOTIFICATION_NAME
+                                                         object:self
+                                                       userInfo:@{BOOK_KEY: self.model}];
+    
+    // Enviamos la notificacion
+    [[NSNotificationCenter defaultCenter] postNotification:note];
+//    [self.delegate bookViewController:self didChangeBook:self.model];
 }
 
 #pragma mark - UISplitViewControllerDelegate
@@ -138,8 +146,7 @@
 // BOOK_DID_CHANGE_NOTIFICATION_NAME
 - (void) notifyThatBookDidChange: (NSNotification *) aNotification{
     
-    // Sacamos el personaje
-    // no usar "valueForKey", ya que eso es para KVC. Para diccionarios se usa "objectForKey"
+    // Sacamos el libro
     FLGBook *book = [aNotification.userInfo objectForKey:BOOK_KEY];
     
     // Actualizamos el modelo

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class FLGBook;
 
 @interface FLGBookTableViewCell : UITableViewCell
 
@@ -17,5 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *authors;
 
 + (NSString *) cellId;
+
+- (void) configureWithBook: (FLGBook *) book;
 
 @end

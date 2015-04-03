@@ -15,6 +15,8 @@
 + (NSURL *) applicationDocumentsURLForFileName: (NSString *) filename;
 + (NSURL *) urlForJSONDataInSandbox;
 + (void) saveLibraryJson: (NSData *) jsonData;
++ (NSURL *) downloadAndSaveFileWithUrl: (NSURL *) remoteUrl;
 + (NSData *) downloadAndSaveLibraryImages: (NSData *) jsonData;
++ (FLGBook *) downloadAndSavePdfForBook: (FLGBook *) book;
 
 @end

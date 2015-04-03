@@ -7,6 +7,7 @@
 //
 
 #import "FLGBookTableViewCell.h"
+#import "FLGBook.h"
 
 @implementation FLGBookTableViewCell
 
@@ -23,10 +24,18 @@
 //    [self setSelected:NO];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void) setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void) configureWithBook: (FLGBook *) book{
+    self.title.text = book.title;
+    self.authors.text = [book authorsAsString];
+    self.bookImage.image = [book bookImage];
+    self.favouriteIcon.image = [book favouriteImage];
+    self.downloadIcon.hidden = !book.savedInLocal;
 }
 
 @end

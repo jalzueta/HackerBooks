@@ -83,30 +83,53 @@
 
 + (FLGBook *) downloadAndSaveImageForBook: (FLGBook *) book{
     
+    NSURL *newImageURL = [self downloadAndSaveFileWithUrl:book.imageURL];
+    book.imageURL = newImageURL;
+    
+    return book;
+}
+
++ (FLGBook *) downloadAndSavePdfForBook: (FLGBook *) book{
+    
+    NSURL *newPdfURL = [self downloadAndSaveFileWithUrl:book.pdfURL];
+    if (newPdfURL != book.pdfURL) {
+        book.savedInLocal = YES;
+        book.pdfURL = newPdfURL;
+    }
+    
+    return book;
+}
+
++ (NSURL *) downloadAndSaveFileWithUrl: (NSURL *) remoteUrl{
+    
     // Otenemos el nombre del fichero de la imagen en servidor
-    NSString *imageFileName = [book.imageURL lastPathComponent];
+    NSString *fileName = [remoteUrl lastPathComponent];
     
     // Gestion de errores
     NSError *err;
     
     // Descarga de la imagen desde servidor
-    NSData *imageData = [NSData dataWithContentsOfURL:book.imageURL];
+    NSData *data = [NSData dataWithContentsOfURL:remoteUrl];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:remoteUrl];
+//    NSURLResponse *response = [[NSURLResponse alloc] init];
+//    NSError *error;
+//    NSData *data = [NSURLConnection sendSynchronousRequest:request
+//                                         returningResponse:&response
+//                                                     error:&error];
     
     // Guarda la imagen en Documents
-    NSURL *imageLocalURL = [self applicationDocumentsURLForFileName:imageFileName];
-    BOOL rc = [imageData writeToURL:imageLocalURL
-                            options:NSDataWritingAtomic
-                              error:&err];
+    NSURL *localURL = [self applicationDocumentsURLForFileName:fileName];
+    BOOL rc = [data writeToURL:localURL
+                          options:NSDataWritingAtomic
+                            error:&err];
     
     if (rc) {
         // Guardado sin errores
-        book.imageURL = imageLocalURL;
+        return localURL;
     }else{
-        NSLog(@"Error al guardar la imagen: %@", err);
+        NSLog(@"Error al guardar el fichero: %@", err);
+        return remoteUrl;
     }
-    
-    // Se devuelve el objeto "book" con la nueva "imageURL" (local)
-    return book;
 }
 
 @end

@@ -35,12 +35,28 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    // Nos damos de alta en las notificaciones
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self
+               selector:@selector(notifyThatBookDidChangeItsContent:)
+                   name:BOOK_DID_CHANGE_ITS_CONTENT_NOTIFICATION_NAME
+                 object:nil];
+    
     // Registramos el Nig de la celda personalizada
     UINib *nib = [UINib nibWithNibName:@"FLGBookTableViewCell"
                                 bundle:[NSBundle mainBundle]];
     
     [self.tableView registerNib:nib
          forCellReuseIdentifier:[FLGBookTableViewCell cellId]];
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    // Nos damos de baja de las notificaciones
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,20 +97,11 @@
     }
     
     // Sincronizamos modelo (personaje) -> vista (celda)
-    cell.title.text = book.title;
-    cell.authors.text = [book authorsAsString];
-    cell.bookImage.image = [book bookImage];
-    cell.favouriteIcon.image = [book favouriteImage];
+    [cell configureWithBook: book];
     
-
     // Devolverla
     return cell;
 }
-
-//- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-//    
-//    return [[self.model tagForIndex:section] capitalizedString];
-//}
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 30.0;
@@ -132,14 +139,6 @@
 }
 
 
-//- (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-//    if ([[self.model.tags objectAtIndex:section] isEqualToString:FAVOURITES_TAG]) {
-//        return [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 30.0)];
-//    }
-//    return [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 30.0)];
-//}
-
-
 #pragma mark - UITableViewControllerDelegate
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -163,10 +162,24 @@
 }
 
 
-#pragma mark - FLGBookViewControllerDelegate
+//#pragma mark - FLGBookViewControllerDelegate
+//
+//- (void) bookViewController:(FLGBookViewController *)bookViewController didChangeBook:(FLGBook *)book{
+//    [self.model updateLibraryWithBook: book];
+//    [self.tableView reloadData];
+//}
 
-- (void) bookViewController:(FLGBookViewController *)bookViewController didChangeBook:(FLGBook *)book{
+#pragma mark - Notifications
+// BOOK_DID_CHANGE_ITS_CONTENT_NOTIFICATION_NAME
+- (void) notifyThatBookDidChangeItsContent: (NSNotification *) aNotification{
+    
+    // Sacamos el libro
+    FLGBook *book = [aNotification.userInfo objectForKey:BOOK_KEY];
+    
+    // Actualizamos el modelo
     [self.model updateLibraryWithBook: book];
+    
+    // Sincronizamos modelo -> vista
     [self.tableView reloadData];
 }
 

@@ -16,7 +16,6 @@
 @property (strong, nonatomic) NSArray *tags;
 @property (strong, nonatomic) NSURL *imageURL;
 @property (strong, nonatomic) NSURL *pdfURL;
-@property (nonatomic) BOOL isFavourite;
 @property (nonatomic) BOOL savedInLocal;
 
 // designated init
@@ -36,7 +35,9 @@
 - (NSString *) authorsAsString;
 - (UIImage *) bookImage;
 - (UIImage *) favouriteImage;
-
+- (BOOL) isFavourite;
+- (void) setIsFavourite: (BOOL) isFavourite;
 - (BOOL) isTheSameBook: (FLGBook *) book;
+- (NSURL *) localPdfURL;
 
 @end

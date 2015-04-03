@@ -17,12 +17,14 @@
 #define PDF_URL_KEY @"pdf_url"
 #define TAGS_KEY @"tags"
 #define TITLE_KEY @"title"
+#define SAVED_IN_LOCAL_KEY @"saved_in_local"
 
 #pragma mark - FLGLibrary
 #define FAVOURITES_TAG @"Favourites"
 
 #pragma mark - Notifications
 #define BOOK_DID_CHANGE_NOTIFICATION_NAME @"bookDidChange"
+#define BOOK_DID_CHANGE_ITS_CONTENT_NOTIFICATION_NAME @"bookDidChangeItsContent"
 #define BOOK_KEY @"book"
 
 #pragma mark - NSUserDefaults

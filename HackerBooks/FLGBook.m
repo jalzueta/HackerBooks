@@ -24,6 +24,7 @@
 
 #pragma mark - Properties
 
+
 #pragma mark - Init
 // designated init
 - (id) initWithTitle: (NSString *)title
@@ -101,6 +102,33 @@
 
 - (BOOL) isTheSameBook: (FLGBook *) book{
     return (self.title == book.title && self.authors == book.authors && self.imageURL == book.imageURL);
+}
+
+- (NSURL *) localPdfURL{
+    if (!self.savedInLocal) {
+        [self downloadAndSavePdf];
+        
+        // Mandamos una notificacion -> para avisar a bookViewController y a pdfViewController
+        NSNotification *note = [NSNotification notificationWithName:BOOK_DID_CHANGE_ITS_CONTENT_NOTIFICATION_NAME
+                                                             object:self
+                                                           userInfo:@{BOOK_KEY: self}];
+        
+        // Enviamos la notificacion
+        [[NSNotificationCenter defaultCenter] postNotification:note];
+    }else{
+        self.pdfURL = [FLGSandboxUtils applicationDocumentsURLForFileName:[self.pdfURL lastPathComponent]];
+    }
+    return self.pdfURL;
+}
+
+- (void) downloadAndSavePdf{
+    
+//    [FLGSandboxUtils downloadAndSavePdfForBook:self];
+    NSURL *newPdfURL = [FLGSandboxUtils downloadAndSaveFileWithUrl:self.pdfURL];
+    if (newPdfURL != self.pdfURL) {
+        self.savedInLocal = YES;
+        self.pdfURL = newPdfURL;
+    }
 }
 
 

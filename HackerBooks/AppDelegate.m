@@ -48,8 +48,16 @@
     // Creo el modelo con los datos obtenidos (server/local)
     self.library = [[FLGLibrary alloc] initWithJsonData:booksData error:nil];
     
-    // Tipo tableta
-    [self configureForPadWithModel:self.library];
+    // Detectamos el tipo de pantalla
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        
+        // Tipo tableta
+        [self configureForPadWithModel:self.library];
+    }else{
+        
+        // Tipo telefono
+        [self configureForPhoneWithModel:self.library];
+    }
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -106,10 +114,27 @@
     
     // Asignamos delegados
     spliVC.delegate = bookVC;
-    bookVC.delegate = self.libraryVC;
+    self.libraryVC.delegate = bookVC;
     
     // Mostramos el controlador en pantalla
     self.window.rootViewController = spliVC;
+}
+
+- (void) configureForPhoneWithModel: (FLGLibrary *) library{
+    
+    // Creamos los controladores
+    self.libraryVC = [[FLGLibraryTableViewController alloc] initWithModel:library
+                                                             selectedBook:nil
+                                                                    style:UITableViewStylePlain];
+
+    // Creo los navigationControllers
+    UINavigationController *libraryNavVC = [[UINavigationController alloc] initWithRootViewController:self.libraryVC];
+    
+    // Asignamos delegados
+    self.libraryVC.delegate = self.libraryVC;
+    
+    // Mostramos el controlador en pantalla
+    self.window.rootViewController = libraryNavVC;
 }
 
 - (FLGBook *) lastSelectedBookInModel: (FLGLibrary *) library{

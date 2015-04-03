@@ -20,7 +20,7 @@
 #define SAVED_IN_LOCAL_KEY @"saved_in_local"
 
 #pragma mark - FLGLibrary
-#define FAVOURITES_TAG @"Favourites"
+#define FAVOURITES_TAG @"Favorites"
 
 #pragma mark - Notifications
 #define BOOK_DID_CHANGE_NOTIFICATION_NAME @"bookDidChange"
@@ -33,5 +33,10 @@
 #pragma mark - Book
 #define FAVOURITE_ON_IMAGE_NAME @"favourite_on.png"
 #define FAVOURITE_OFF_IMAGE_NAME @"favourite_off.png"
+
+#pragma mark - Colors
+#define FAVOURITE_HEADER_COLOR [UIColor colorWithRed:77/255.0 green:173/255.0 blue:0/255.0 alpha:1.0]
+#define CATHEGORY_HEADER_COLOR [UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0]
+#define SELECTED_CELL_BACKGROUND_COLOR [UIColor colorWithRed:211/255.0 green:211/255.0 blue:255/255.0 alpha:1.0]
 
 

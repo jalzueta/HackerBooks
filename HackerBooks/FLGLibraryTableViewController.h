@@ -9,12 +9,21 @@
 @import UIKit;
 @class FLGLibrary;
 @class FLGBook;
-#import "FLGBookViewController.h"
+@class FLGLibraryTableViewController;
 
-@interface FLGLibraryTableViewController : UITableViewController<FLGBookViewControllerDelegate>
+@protocol FLGLibraryTableViewControllerDelegate <NSObject>
+
+@optional
+- (void) libraryTableViewController: (FLGLibraryTableViewController *) libraryTableViewController didSelectBook: (FLGBook *) book;
+
+@end
+
+@interface FLGLibraryTableViewController : UITableViewController<FLGLibraryTableViewControllerDelegate>
 
 @property (strong, nonatomic) FLGLibrary *model;
 @property (strong, nonatomic) FLGBook *selectedBook;
+
+@property (weak, nonatomic) id <FLGLibraryTableViewControllerDelegate> delegate;
 
 // Inicializador designado
 - (id) initWithModel: (FLGLibrary *) model

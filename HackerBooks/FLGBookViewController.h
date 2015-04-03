@@ -9,6 +9,7 @@
 @import UIKit;
 @class FLGBook;
 @class FLGBookViewController;
+#import "FLGLibraryTableViewController.h"
 
 @protocol FLGBookViewControllerDelegate <NSObject>
 
@@ -18,12 +19,12 @@
 
 @end
 
-@interface FLGBookViewController : UIViewController<UISplitViewControllerDelegate, UITableViewDataSource>
+@interface FLGBookViewController : UIViewController<UISplitViewControllerDelegate, FLGLibraryTableViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *bookTitle;
 @property (weak, nonatomic) IBOutlet UILabel *authors;
+@property (weak, nonatomic) IBOutlet UILabel *tags;
 @property (weak, nonatomic) IBOutlet UIImageView *bookImage;
-@property (weak, nonatomic) IBOutlet UITableView *tagsTableView;
 @property (weak, nonatomic) IBOutlet UIImageView *favouriteImage;
 
 @property (weak, nonatomic) id <FLGBookViewControllerDelegate> delegate;

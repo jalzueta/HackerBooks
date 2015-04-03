@@ -33,6 +33,7 @@
               pdfURL: (NSURL *) pdfURL;
 
 - (NSString *) authorsAsString;
+- (NSString *) tagsAsString;
 - (UIImage *) bookImage;
 - (UIImage *) favouriteImage;
 - (BOOL) isFavourite;

@@ -22,6 +22,7 @@
     if (self = [super initWithNibName:nil
                                bundle:nil]) {
         _model = model;
+        self.title = @"PDF reader";
     }
     return self;
 }
@@ -49,6 +50,9 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:animated];
+    
     [self syncViewToModel];
 }
 
@@ -102,9 +106,8 @@
 }
 
 - (void) syncViewToModel{
-    // Sincronizar modelo -> vista
-    self.title = @"PDF";
     
+    // Sincronizar modelo -> vista
     [self.activityView setHidden:NO];
     [self.activityView startAnimating];
     

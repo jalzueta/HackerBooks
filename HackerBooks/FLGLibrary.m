@@ -13,6 +13,11 @@
 
 @implementation FLGLibrary
 
+#pragma mark - Properties
+- (NSUInteger) tagsCount{
+    return self.tags.count;
+}
+
 #pragma mark - Inits
 - (id) initWithJsonData: (NSData *) jsonData error: (NSError *) error{
     if (self = [super init]) {
@@ -59,10 +64,6 @@
 
 #pragma mark - Accesors
 
-- (NSUInteger) tagsCount{
-    return [self.tags count];
-}
-
 - (NSString *) tagForIndex: (NSUInteger) index{
     
     return [self.tags objectAtIndex:index];
@@ -79,9 +80,19 @@
     return (NSArray *)[self.booksForTagDict objectForKey:tag];
 }
 
+- (NSArray *) sortedBooksForTag: (NSString *) tag{
+    NSArray *array = [self booksForTag:tag];
+    NSArray *sortedArray = [array sortedArrayUsingComparator:^(id a, id b) {
+        NSString *first = [(FLGBook *)a title];
+        NSString *second = [(FLGBook *)b title];
+        return [first caseInsensitiveCompare:second];
+    }];
+    return sortedArray;
+}
+
 - (FLGBook *) bookForTag: (NSString *) tag atIndex: (NSUInteger) index{
     
-    return [[self booksForTag:tag] objectAtIndex:index];
+    return [[self sortedBooksForTag:tag] objectAtIndex:index];
 }
 
 

@@ -66,6 +66,10 @@
     return [self.authors componentsJoinedByString:@", "];
 }
 
+- (NSString *) tagsAsString{
+    return [self.tags componentsJoinedByString:@", "];
+}
+
 - (UIImage *) bookImage{
     
     // Otenemos el nombre del fichero de la imagen en servidor

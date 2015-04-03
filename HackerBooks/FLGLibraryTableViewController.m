@@ -9,7 +9,7 @@
 #import "FLGLibraryTableViewController.h"
 #import "FLGLibrary.h"
 #import "FLGBook.h"
-#import "FLGBook.h"
+#import "FLGBookViewController.h"
 #import "FLGSandboxUtils.h"
 #import "FLGConstants.h"
 #import "FLGBookTableViewCell.h"
@@ -53,6 +53,9 @@
 - (void) viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
+}
+
+- (void) dealloc{
     
     // Nos damos de baja de las notificaciones
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -118,13 +121,14 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 30.0)];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.tableView.frame.size.width - 40, 30.0)];
     titleLabel.text = [[self.model tagForIndex:section] capitalizedString];
+    titleLabel.font = [UIFont fontWithName:@"Palatino" size:20.0];
     
     if ([[self.model.tags objectAtIndex:section] isEqualToString:FAVOURITES_TAG]) {
-        titleLabel.textColor = [UIColor colorWithRed:0.0 green:83/255.0 blue:14/255.0 alpha:1.0];
-        headerView.backgroundColor = [UIColor greenColor];
+        titleLabel.textColor = [UIColor whiteColor];
+        headerView.backgroundColor = FAVOURITE_HEADER_COLOR;
     }else{
-        titleLabel.textColor = [UIColor darkGrayColor];
-        headerView.backgroundColor = [UIColor lightGrayColor];
+        titleLabel.textColor = [UIColor whiteColor];
+        headerView.backgroundColor = CATHEGORY_HEADER_COLOR;
     }
     titleLabel.textAlignment = NSTextAlignmentCenter;
     
@@ -134,7 +138,7 @@
 
 - (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 10.0)];
-    footerView.backgroundColor = [UIColor greenColor];
+    footerView.backgroundColor = [UIColor colorWithRed:77/255.0 green:173/255.0 blue:0/255.0 alpha:1.0];
     return footerView;
 }
 
@@ -146,7 +150,16 @@
     // Averiguar de qué modelo (personaje) me están hablando
     FLGBook *book = [self.model bookForTag:[self.model.tags objectAtIndex:indexPath.section] atIndex:indexPath.row];
     
-    // Mandamos una notificacion -> para avisar a bookViewController y a pdfViewController
+    // Actualizo la property self.selectedBook para la actualizacion de la celda seleccionada
+    self.selectedBook = book;
+    
+    // Avisar al delegado (siempre y cuando entienda el mensaje) -> bookViewController
+    if ([self.delegate respondsToSelector:@selector(libraryTableViewController:didSelectBook:)]) {
+        // Envio el mensaje al delegado
+        [self.delegate libraryTableViewController:self didSelectBook:book];
+    }
+    
+    // Mandamos una notificacion -> para avisar a pdfViewController
     NSNotification *note = [NSNotification notificationWithName:BOOK_DID_CHANGE_NOTIFICATION_NAME
                                                          object:self
                                                        userInfo:@{BOOK_KEY: book}];
@@ -161,13 +174,16 @@
     [def synchronize];
 }
 
+#pragma mark - FLGLibraryTableViewControllerDelegate
 
-//#pragma mark - FLGBookViewControllerDelegate
-//
-//- (void) bookViewController:(FLGBookViewController *)bookViewController didChangeBook:(FLGBook *)book{
-//    [self.model updateLibraryWithBook: book];
-//    [self.tableView reloadData];
-//}
+- (void) libraryTableViewController:(FLGLibraryTableViewController *)libraryTableViewController didSelectBook:(FLGBook *)book{
+    
+    // Creamos un BookVC
+    FLGBookViewController *bookVC = [[FLGBookViewController alloc] initWithModel:book];
+    
+    // Hago un push
+    [self.navigationController pushViewController:bookVC animated:YES];
+}
 
 #pragma mark - Notifications
 // BOOK_DID_CHANGE_ITS_CONTENT_NOTIFICATION_NAME
@@ -182,6 +198,5 @@
     // Sincronizamos modelo -> vista
     [self.tableView reloadData];
 }
-
 
 @end

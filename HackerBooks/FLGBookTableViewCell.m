@@ -8,6 +8,7 @@
 
 #import "FLGBookTableViewCell.h"
 #import "FLGBook.h"
+#import "FLGConstants.h"
 
 @implementation FLGBookTableViewCell
 
@@ -17,6 +18,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    UIView *backgroundView = [[UIView alloc] initWithFrame:self.frame];
+    backgroundView.backgroundColor = SELECTED_CELL_BACKGROUND_COLOR;
+    self.selectedBackgroundView = backgroundView;
 }
 
 - (void) prepareForReuse{

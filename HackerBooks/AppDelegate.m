@@ -100,6 +100,7 @@
     FLGBook *lastSelectedBook = [self lastSelectedBookInModel: library];
     self.libraryVC = [[FLGLibraryTableViewController alloc] initWithModel:library
                                                              selectedBook:lastSelectedBook
+                                                         showSelectedCell: YES
                                                                     style:UITableViewStylePlain];
     
     FLGBookViewController *bookVC = [[FLGBookViewController alloc] initWithModel:lastSelectedBook];
@@ -125,6 +126,7 @@
     // Creamos los controladores
     self.libraryVC = [[FLGLibraryTableViewController alloc] initWithModel:library
                                                              selectedBook:nil
+                                                         showSelectedCell: NO
                                                                     style:UITableViewStylePlain];
 
     // Creo los navigationControllers

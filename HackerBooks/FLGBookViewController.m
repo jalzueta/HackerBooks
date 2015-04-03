@@ -97,6 +97,7 @@
     self.authors.text = [NSString stringWithFormat:@"Authors: %@", [self.model authorsAsString]];
     self.bookImage.image = [self.model bookImage];
     self.tags.text = [NSString stringWithFormat:@"Tags: %@", [self.model tagsAsString]];
+    self.savedOnDiskImage.hidden = !self.model.savedInLocal;
     [self syncFavouriteValue];
 }
 

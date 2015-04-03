@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tags;
 @property (weak, nonatomic) IBOutlet UIImageView *bookImage;
 @property (weak, nonatomic) IBOutlet UIImageView *favouriteImage;
+@property (weak, nonatomic) IBOutlet UIImageView *savedOnDiskImage;
 
 @property (weak, nonatomic) id <FLGBookViewControllerDelegate> delegate;
 

@@ -30,11 +30,13 @@ Para el **envío de información desde el FLGBookViewController a FLGLibraryTabl
 Se podría haber utilizado un protocolo de delegado, pero he elegido las notificaciones por el siguiente motivo: Para el envío de información entre el *FLGLibraryTableViewController* y el *FLGBookViewController* (es decir, en sentido inverso) he optado por utilizar un protocolo de delegado sobre todo para simplificar la *universalización* de la App. Así, he establecido a *FLGBookViewController* como delegado de *FLGLibraryTableViewController*, por lo que no he podido hacer a *FLGLibraryTableViewController* delegado de *FLGBookViewController*, estableciendo ese *"cruce de delegados"*, ya que se producía un *"import cíclico de sus ficheros de cabecera"*.<br/>
 Podía haber sacado las declaraciones de los protocolos a una clase aparte, pero me ha parecido más claro hacerlo así.<br/>
 <br/>
-Sobre la **actualización de la tabla** mediante *"reloadData"*, , no creo que sea una *"aberración"* desde el punto de vista del rendimiento, ya que se van a recargar unas pocas celdas (unas pocas más de las que están en la vista) y los recursos de las celdas ya se encuentran alojados en el sandbox de la App. Si tuviéramos que descargar las imágenes desde el servidor cada vez que recargamos la celda, la cosa cambiaría.</br>
-Para recargar los datos de celdas concretas existe el método de las UITableView *"reloadRowsAtIndexPaths"*.<br/>
-Para el caso que nos ocupa, tendríamos que tener cierto cuidado, ya que al hacer/deshacer un libro como favorito nos estaría cambiando el número de rows de la seccion favoritos e incluso nos podrían estar cambiando el número de secciones (en el caso de que eliminemos la seccion favoritos si no hay libros en ella). 
+Sobre la **actualización de la tabla** mediante *"reloadData"*, , no creo que sea una *"aberración"* desde el punto de vista del rendimiento, ya que se van a recargar unas pocas celdas (unas pocas más de las que están en la vista) y los recursos de las celdas ya se encuentran alojados en el sandbox de la App.<br/>
+Si la recarga de la tabla supusiera un consumo alto de datos de conexión o de recursos del dispositivo, por ejemplo porque se descargan siempre las imágenes desde servidor, la cosa cambiaría.</br>
+En ese caso se podría optar por recargar únicamente la celda del libro que ha cambiado. Para recargar los datos de celdas concretas existe el método de las UITableView *"reloadRowsAtIndexPaths"*.<br/>
+Para el caso que nos ocupa, tendríamos que tener cierto cuidado, ya que abría que recargar todas las celdas que contienen al libro cuyo estado ha sido modificado (puede existir en varias secciones diferentes). Además, al hacer/deshacer un libro como favorito nos estaría cambiando el número de rows de la seccion favoritos e incluso nos podrían estar cambiando el número de secciones (en el caso de que eliminemos la seccion favoritos si no hay libros en ella).
 
-
+**Sobre el *Controlador de PDF*:**<br/>
+Para actualizar el PDF que se está mostrando cualdo el usuario pulsa sobre un elemento de *FLGLibraryTableViewController*, utilizo notificaciones. *FLGLibraryTableViewController* envía una notificación de cambio de libro y *FLGPdfViewController* la recibe porque se surcribe a dicha notificación.
 
 
 

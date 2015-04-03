@@ -10,6 +10,7 @@
                 <outlet property="bookImage" destination="VQX-Au-n8G" id="SXu-hm-hiZ"/>
                 <outlet property="bookTitle" destination="xvM-iz-1WF" id="dLf-iF-zwP"/>
                 <outlet property="favouriteImage" destination="sub-ec-tdn" id="Tei-AS-SN0"/>
+                <outlet property="savedOnDiskImage" destination="VhC-P0-G5p" id="TNa-yb-Bph"/>
                 <outlet property="tags" destination="4AC-FE-JHU" id="ilE-aQ-jOk"/>
                 <outlet property="view" destination="iN0-l3-epB" id="EfS-Hf-2zt"/>
             </connections>
@@ -21,7 +22,7 @@
             <subviews>
                 <view contentMode="scaleToFill" id="Pry-pR-Yns">
                     <rect key="frame" x="0.0" y="468" width="320" height="100"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Structures and Algorithm Analysis in Java" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xvM-iz-1WF">
                             <rect key="frame" x="8" y="4" width="304" height="30"/>
@@ -54,7 +55,7 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RmV-4x-Ynm">
                                     <rect key="frame" x="-2" y="3" width="45" height="45"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -77,6 +78,10 @@
                                 <action selector="displayPdf:" destination="-1" eventType="touchUpInside" id="Im6-TD-b1D"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="saved_icon.png" id="VhC-P0-G5p">
+                            <rect key="frame" x="279" y="30" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
@@ -92,6 +97,7 @@
     <resources>
         <image name="favourite_off.png" width="256" height="256"/>
         <image name="open_pdf.png" width="60" height="60"/>
+        <image name="saved_icon.png" width="256" height="256"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

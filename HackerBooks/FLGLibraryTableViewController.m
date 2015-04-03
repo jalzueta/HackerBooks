@@ -22,10 +22,12 @@
 
 - (id) initWithModel: (FLGLibrary *) model
         selectedBook: (FLGBook *) selectedBook
+    showSelectedCell: (BOOL) showSelectedCell
                style: (UITableViewStyle) style{
     
     if (self = [super initWithStyle:style]) {
         _model = model;
+        _showSelectedCell = showSelectedCell;
         _selectedBook = selectedBook;
         self.title = @"Library";
     }
@@ -93,7 +95,7 @@
                                                             forIndexPath:indexPath];
     
     // Seleccionamos la celda, si procede
-    if (book == self.selectedBook) {
+    if (book == self.selectedBook && self.showSelectedCell) {
         [tableView selectRowAtIndexPath:indexPath
                                animated:YES
                          scrollPosition:UITableViewScrollPositionNone];
@@ -121,7 +123,7 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 30.0)];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.tableView.frame.size.width - 40, 30.0)];
     titleLabel.text = [[self.model tagForIndex:section] capitalizedString];
-    titleLabel.font = [UIFont fontWithName:@"Palatino" size:20.0];
+    titleLabel.font = [UIFont fontWithName:@"Palatino-Bold" size:18.0];
     
     if ([[self.model.tags objectAtIndex:section] isEqualToString:FAVOURITES_TAG]) {
         titleLabel.textColor = [UIColor whiteColor];

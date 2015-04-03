@@ -16,6 +16,10 @@
 		5949E70C1ACD94D7009E2DAB /* open_pdf.png in Resources */ = {isa = PBXBuildFile; fileRef = 5949E70A1ACD94D7009E2DAB /* open_pdf.png */; };
 		5949E70D1ACD94D7009E2DAB /* open_pdf@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5949E70B1ACD94D7009E2DAB /* open_pdf@2x.png */; };
 		5949E7141ACEEED4009E2DAB /* FLGBookViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5949E7131ACEEED4009E2DAB /* FLGBookViewController~iphone.xib */; };
+		5949E7161ACF221E009E2DAB /* saved_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 5949E7151ACF221E009E2DAB /* saved_on.png */; };
+		5949E71A1ACF23E7009E2DAB /* favourite_icon_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 5949E7171ACF23E7009E2DAB /* favourite_icon_off.png */; };
+		5949E71B1ACF23E7009E2DAB /* favourite_icon_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 5949E7181ACF23E7009E2DAB /* favourite_icon_on.png */; };
+		5949E71C1ACF23E7009E2DAB /* saved_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5949E7191ACF23E7009E2DAB /* saved_icon.png */; };
 		5993FCE61ACB71E500273B61 /* FLGSandboxUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5993FCE51ACB71E500273B61 /* FLGSandboxUtils.m */; };
 		5993FCEE1ACC99ED00273B61 /* FLGBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5993FCEC1ACC99ED00273B61 /* FLGBookViewController.m */; };
 		5993FCEF1ACC99ED00273B61 /* FLGBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5993FCED1ACC99ED00273B61 /* FLGBookViewController.xib */; };
@@ -52,6 +56,10 @@
 		5949E70A1ACD94D7009E2DAB /* open_pdf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_pdf.png; sourceTree = "<group>"; };
 		5949E70B1ACD94D7009E2DAB /* open_pdf@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "open_pdf@2x.png"; sourceTree = "<group>"; };
 		5949E7131ACEEED4009E2DAB /* FLGBookViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FLGBookViewController~iphone.xib"; sourceTree = "<group>"; };
+		5949E7151ACF221E009E2DAB /* saved_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saved_on.png; sourceTree = "<group>"; };
+		5949E7171ACF23E7009E2DAB /* favourite_icon_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favourite_icon_off.png; sourceTree = "<group>"; };
+		5949E7181ACF23E7009E2DAB /* favourite_icon_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favourite_icon_on.png; sourceTree = "<group>"; };
+		5949E7191ACF23E7009E2DAB /* saved_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saved_icon.png; sourceTree = "<group>"; };
 		5993FCE41ACB71E500273B61 /* FLGSandboxUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGSandboxUtils.h; sourceTree = "<group>"; };
 		5993FCE51ACB71E500273B61 /* FLGSandboxUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGSandboxUtils.m; sourceTree = "<group>"; };
 		5993FCEB1ACC99ED00273B61 /* FLGBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGBookViewController.h; sourceTree = "<group>"; };
@@ -109,8 +117,12 @@
 		5949E6FF1ACD9003009E2DAB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5949E7151ACF221E009E2DAB /* saved_on.png */,
+				5949E7191ACF23E7009E2DAB /* saved_icon.png */,
 				5949E7001ACD9013009E2DAB /* favourite_off.png */,
 				5949E7011ACD9013009E2DAB /* favourite_on.png */,
+				5949E7171ACF23E7009E2DAB /* favourite_icon_off.png */,
+				5949E7181ACF23E7009E2DAB /* favourite_icon_on.png */,
 				5949E70A1ACD94D7009E2DAB /* open_pdf.png */,
 				5949E70B1ACD94D7009E2DAB /* open_pdf@2x.png */,
 			);
@@ -308,10 +320,14 @@
 			files = (
 				59FDD5A91AC99B5B0062037B /* LaunchScreen.xib in Resources */,
 				5949E7031ACD9013009E2DAB /* favourite_on.png in Resources */,
+				5949E71C1ACF23E7009E2DAB /* saved_icon.png in Resources */,
 				5949E70C1ACD94D7009E2DAB /* open_pdf.png in Resources */,
+				5949E7161ACF221E009E2DAB /* saved_on.png in Resources */,
+				5949E71A1ACF23E7009E2DAB /* favourite_icon_off.png in Resources */,
 				59FDD5A61AC99B5B0062037B /* Images.xcassets in Resources */,
 				5993FCEF1ACC99ED00273B61 /* FLGBookViewController.xib in Resources */,
 				5949E70D1ACD94D7009E2DAB /* open_pdf@2x.png in Resources */,
+				5949E71B1ACF23E7009E2DAB /* favourite_icon_on.png in Resources */,
 				5949E7021ACD9013009E2DAB /* favourite_off.png in Resources */,
 				5949E6FD1ACD84E9009E2DAB /* FLGBookTableViewCell.xib in Resources */,
 				5949E7141ACEEED4009E2DAB /* FLGBookViewController~iphone.xib in Resources */,

@@ -22,12 +22,14 @@
 
 @property (strong, nonatomic) FLGLibrary *model;
 @property (strong, nonatomic) FLGBook *selectedBook;
+@property (nonatomic) BOOL showSelectedCell;
 
 @property (weak, nonatomic) id <FLGLibraryTableViewControllerDelegate> delegate;
 
 // Inicializador designado
 - (id) initWithModel: (FLGLibrary *) model
         selectedBook: (FLGBook *) selectedBook
+    showSelectedCell: (BOOL) showSelectedCell
                style: (UITableViewStyle) style;
 
 @end

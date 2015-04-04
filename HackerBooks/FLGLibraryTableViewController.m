@@ -109,6 +109,12 @@
     // Sincronizamos modelo (personaje) -> vista (celda)
     [cell configureWithBook: book];
     
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = cell.favouriteIcon.frame;
+    [button addTarget:self action:@selector(didPressedOnFavoriteButtonInCellWithIndexPath: event:)  forControlEvents:UIControlEventTouchUpInside];
+    button.backgroundColor = [UIColor clearColor];
+    [cell addSubview: button];
+    
     // Devolverla
     return cell;
 }
@@ -204,6 +210,30 @@
     
     // Sincronizamos modelo -> vista
     [self.tableView reloadData];
+}
+
+#pragma mark - Utils
+
+- (void) didPressedOnFavoriteButtonInCellWithIndexPath: (id) sender event: (id) event{
+    
+    NSSet *touches = [event allTouches];
+    UITouch *touch = [touches anyObject];
+    CGPoint currentTouchPosition = [touch locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint: currentTouchPosition];
+    if (indexPath != nil){
+        // Averiguar de qué modelo (personaje) me están hablando
+        FLGBook *book = [self.model bookForTag:[self.model.tags objectAtIndex:indexPath.section] atIndex:indexPath.row];
+        [book setIsFavourite:![book isFavourite]];
+        
+        // Actualizamos el modelo
+        [self.model updateLibraryWithBook: book];
+        
+        // Sincronizamos modelo -> vista
+        [self.tableView reloadData];
+        
+        //Avisamos a FLGBookViewController de que ha cambiado el libro -> Envio el mensaje al delegado
+        [self.delegate libraryTableViewController:self didSelectBook:book];
+    }
 }
 
 @end

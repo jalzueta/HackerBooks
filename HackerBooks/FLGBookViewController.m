@@ -95,10 +95,18 @@
     
     self.bookTitle.text = self.model.title;
     self.authors.text = [NSString stringWithFormat:@"Authors: %@", [self.model authorsAsString]];
+    self.backgroundBookImage.image = [self.model bookImage];
     self.bookImage.image = [self.model bookImage];
     self.tags.text = [NSString stringWithFormat:@"Tags: %@", [self.model tagsAsString]];
     self.savedOnDiskImage.hidden = !self.model.savedInLocal;
     [self syncFavouriteValue];
+    
+    self.bookImage.layer.shadowColor = [UIColor whiteColor].CGColor;
+    self.bookImage.layer.masksToBounds = NO;
+    self.bookImage.layer.shadowOffset = CGSizeMake(5, 5);
+    self.bookImage.layer.shadowOpacity = 0.5;
+    
+    self.bookDataView.backgroundColor = SELECTED_CELL_BACKGROUND_COLOR;
 }
 
 - (void) syncFavouriteValue{

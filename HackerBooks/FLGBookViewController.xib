@@ -7,7 +7,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FLGBookViewController">
             <connections>
                 <outlet property="authors" destination="Udw-2Q-bsn" id="Mqh-4b-ZCe"/>
-                <outlet property="bookImage" destination="kmv-TH-nNY" id="gGs-q1-nde"/>
+                <outlet property="backgroundBookImage" destination="EFI-mP-C6z" id="3k4-qM-y7w"/>
+                <outlet property="bookDataView" destination="0zw-81-l1x" id="uAT-Z1-8yf"/>
+                <outlet property="bookImage" destination="zjw-Vj-rp6" id="u5q-Xf-0uq"/>
                 <outlet property="bookTitle" destination="aOq-bB-QxI" id="JFp-fj-TUl"/>
                 <outlet property="favouriteImage" destination="2u0-Yg-Dl6" id="EO5-TO-H3x"/>
                 <outlet property="savedOnDiskImage" destination="EIu-Ej-yBd" id="bu7-cz-Dc0"/>
@@ -20,10 +22,25 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="kmv-TH-nNY">
-                    <rect key="frame" x="8" y="8" width="752" height="908"/>
+                <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="EFI-mP-C6z" userLabel="Image View - desenfocada">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" id="CvM-XA-hbI">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="1016"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BbV-48-sRH">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1016"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="zjw-Vj-rp6" userLabel="Image View - Nitida">
+                                <rect key="frame" x="100" y="150" width="568" height="651"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
                 <view contentMode="scaleToFill" id="0zw-81-l1x">
                     <rect key="frame" x="0.0" y="924" width="768" height="100"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>

@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FLGBookViewController">
             <connections>
                 <outlet property="authors" destination="NTR-Qy-chj" id="3wx-1a-Idf"/>
+                <outlet property="bookDataView" destination="Pry-pR-Yns" id="ISJ-26-qbG"/>
                 <outlet property="bookImage" destination="VQX-Au-n8G" id="SXu-hm-hiZ"/>
                 <outlet property="bookTitle" destination="xvM-iz-1WF" id="dLf-iF-zwP"/>
                 <outlet property="favouriteImage" destination="sub-ec-tdn" id="Tei-AS-SN0"/>

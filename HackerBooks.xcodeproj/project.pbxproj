@@ -45,6 +45,7 @@
 		59473A5E1AD147E200F05469 /* Reader-Print@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A4E1AD147E200F05469 /* Reader-Print@2x.png */; };
 		59473A5F1AD147E200F05469 /* Reader-Thumbs.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A4F1AD147E200F05469 /* Reader-Thumbs.png */; };
 		59473A601AD147E200F05469 /* Reader-Thumbs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A501AD147E200F05469 /* Reader-Thumbs@2x.png */; };
+		59473A621AD14A8300F05469 /* Practica.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 59473A611AD14A8300F05469 /* Practica.pdf */; };
 		5949E6F71ACCAC1A009E2DAB /* FLGPdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5949E6F51ACCAC1A009E2DAB /* FLGPdfViewController.m */; };
 		5949E6F81ACCAC1A009E2DAB /* FLGPdfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5949E6F61ACCAC1A009E2DAB /* FLGPdfViewController.xib */; };
 		5949E6FC1ACD84E9009E2DAB /* FLGBookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5949E6FA1ACD84E9009E2DAB /* FLGBookTableViewCell.m */; };
@@ -142,6 +143,7 @@
 		59473A4E1AD147E200F05469 /* Reader-Print@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Print@2x.png"; sourceTree = "<group>"; };
 		59473A4F1AD147E200F05469 /* Reader-Thumbs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs.png"; sourceTree = "<group>"; };
 		59473A501AD147E200F05469 /* Reader-Thumbs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs@2x.png"; sourceTree = "<group>"; };
+		59473A611AD14A8300F05469 /* Practica.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Practica.pdf; sourceTree = "<group>"; };
 		5949E6F41ACCAC1A009E2DAB /* FLGPdfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGPdfViewController.h; sourceTree = "<group>"; };
 		5949E6F51ACCAC1A009E2DAB /* FLGPdfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGPdfViewController.m; sourceTree = "<group>"; };
 		5949E6F61ACCAC1A009E2DAB /* FLGPdfViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLGPdfViewController.xib; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				59473A3E1AD1432400F05469 /* Reader.pdf */,
+				59473A611AD14A8300F05469 /* Practica.pdf */,
 				59473A401AD147D800F05469 /* vfrReader */,
 				5949E7151ACF221E009E2DAB /* saved_on.png */,
 				5949E7191ACF23E7009E2DAB /* saved_icon.png */,
@@ -514,6 +517,7 @@
 				5949E71B1ACF23E7009E2DAB /* favourite_icon_on.png in Resources */,
 				5949E7021ACD9013009E2DAB /* favourite_off.png in Resources */,
 				59473A541AD147E200F05469 /* Reader-Button-N@2x.png in Resources */,
+				59473A621AD14A8300F05469 /* Practica.pdf in Resources */,
 				59473A521AD147E200F05469 /* Reader-Button-H@2x.png in Resources */,
 				5949E6FD1ACD84E9009E2DAB /* FLGBookTableViewCell.xib in Resources */,
 				5949E7141ACEEED4009E2DAB /* FLGBookViewController~iphone.xib in Resources */,

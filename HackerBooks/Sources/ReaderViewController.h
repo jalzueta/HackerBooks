@@ -44,4 +44,7 @@
 
 - (instancetype)initWithReaderDocument:(ReaderDocument *)object;
 
+#pragma mark - HackerBooks
+- (void) updateReaderWithDocument: (ReaderDocument *) document;
+
 @end

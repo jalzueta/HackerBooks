@@ -93,11 +93,11 @@
 #pragma mark - Utils
 
 - (void) syncViewToModel{
-    NSString *file = [[NSBundle mainBundle] pathForResource:@"Reader" ofType:@"pdf"];
+    NSString *file = [[NSBundle mainBundle] pathForResource:@"Practica" ofType:@"pdf"];
 //    NSString *file = [[FLGSandboxUtils applicationDocumentsURLForFileName:@"Reader.pdf"] absoluteString];
     
     ReaderDocument *document = [ReaderDocument withDocumentFilePath:file password:@"password"];
-    self.readerViewController.document = document;
+    [self.readerViewController updateReaderWithDocument: document];
 }
 
 @end

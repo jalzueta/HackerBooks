@@ -232,7 +232,7 @@
 
 - (void)showDocumentPage:(NSInteger)page
 {
-	if (page != currentPage) // Only if on different page
+	if (page != currentPage || page == currentPage) // Only if on different page
 	{
 		if ((page < minimumPage) || (page > maximumPage)) return;
 
@@ -904,4 +904,32 @@
 	if (userInterfaceIdiom == UIUserInterfaceIdiomPad) if (printInteraction != nil) [printInteraction dismissAnimated:NO];
 }
 
+
+#pragma mark - HackerBooks
+- (void) updateReaderWithDocument: (ReaderDocument *) document{
+    if ((document != nil) && ([document isKindOfClass:[ReaderDocument class]])){ // Valid object
+        
+        [document updateDocumentProperties];
+        self.document = document; // Retain the supplied ReaderDocument object for our use
+        [ReaderThumbCache touchThumbCacheWithGUID:document.guid]; // Touch the document thumb cache directory
+        
+        contentViews = [NSMutableDictionary new];
+        lastHideTime = [NSDate date];
+        minimumPage = 1;
+        maximumPage = [self.document.pageCount integerValue];
+        
+//        if (CGSizeEqualToSize(lastAppearSize, CGSizeZero) == false){
+//            if (CGSizeEqualToSize(lastAppearSize, self.view.bounds.size) == false)
+//            {
+//                [self updateContentViews:theScrollView]; // Update content views
+//            }
+//            
+//            lastAppearSize = CGSizeZero; // Reset view size tracking
+//        }
+//        
+//        if (CGSizeEqualToSize(theScrollView.contentSize, CGSizeZero) == true){
+            [self performSelector:@selector(showDocument) withObject:nil afterDelay:0.0];
+//        }
+    }
+}
 @end

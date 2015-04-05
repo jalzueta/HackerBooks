@@ -10,6 +10,7 @@
 #import "FLGBook.h"
 #import "FLGConstants.h"
 #import "FLGPdfViewController.h"
+#import "FLGVfrReaderViewController.h"
 
 
 @implementation FLGBookViewController
@@ -50,11 +51,26 @@
 #pragma mark - Actions
 
 - (IBAction)displayPdf:(id)sender {
+    
+//    [self launchPdfInWebview];
+    
+    [self launchVfrReader];
+}
+
+- (void) launchPdfInWebview{
     // Crear un pdfVC
     FLGPdfViewController *pdfVC = [[FLGPdfViewController alloc] initWithModel:self.model];
     
     // Hacer un push usando la propiedad "navigationController" que tiene todo UIViewController
     [self.navigationController pushViewController:pdfVC animated:YES];
+}
+
+- (void) launchVfrReader{
+    // Crear un vfrReaderVC
+    FLGVfrReaderViewController *vfrVC = [[FLGVfrReaderViewController alloc] initWithModel:self.model];
+    
+    // Hacer un push usando la propiedad "navigationController" que tiene todo UIViewController
+    [self.navigationController pushViewController:vfrVC animated:YES];
 }
 
 - (IBAction)didPressFavourite:(id)sender {

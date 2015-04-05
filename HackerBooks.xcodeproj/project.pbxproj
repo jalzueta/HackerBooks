@@ -28,6 +28,7 @@
 		59473A391AD13F1E00F05469 /* ThumbsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59473A241AD13F1E00F05469 /* ThumbsViewController.m */; };
 		59473A3A1AD13F1E00F05469 /* UIXToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59473A261AD13F1E00F05469 /* UIXToolbarView.m */; };
 		59473A3D1AD13F2D00F05469 /* FLGVfrReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59473A3C1AD13F2D00F05469 /* FLGVfrReaderViewController.m */; };
+		59473A3F1AD1432400F05469 /* Reader.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 59473A3E1AD1432400F05469 /* Reader.pdf */; };
 		5949E6F71ACCAC1A009E2DAB /* FLGPdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5949E6F51ACCAC1A009E2DAB /* FLGPdfViewController.m */; };
 		5949E6F81ACCAC1A009E2DAB /* FLGPdfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5949E6F61ACCAC1A009E2DAB /* FLGPdfViewController.xib */; };
 		5949E6FC1ACD84E9009E2DAB /* FLGBookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5949E6FA1ACD84E9009E2DAB /* FLGBookTableViewCell.m */; };
@@ -108,6 +109,7 @@
 		59473A261AD13F1E00F05469 /* UIXToolbarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIXToolbarView.m; sourceTree = "<group>"; };
 		59473A3B1AD13F2D00F05469 /* FLGVfrReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGVfrReaderViewController.h; sourceTree = "<group>"; };
 		59473A3C1AD13F2D00F05469 /* FLGVfrReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGVfrReaderViewController.m; sourceTree = "<group>"; };
+		59473A3E1AD1432400F05469 /* Reader.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Reader.pdf; sourceTree = "<group>"; };
 		5949E6F41ACCAC1A009E2DAB /* FLGPdfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGPdfViewController.h; sourceTree = "<group>"; };
 		5949E6F51ACCAC1A009E2DAB /* FLGPdfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGPdfViewController.m; sourceTree = "<group>"; };
 		5949E6F61ACCAC1A009E2DAB /* FLGPdfViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLGPdfViewController.xib; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 		5949E6FF1ACD9003009E2DAB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				59473A3E1AD1432400F05469 /* Reader.pdf */,
 				5949E7151ACF221E009E2DAB /* saved_on.png */,
 				5949E7191ACF23E7009E2DAB /* saved_icon.png */,
 				5949E7001ACD9013009E2DAB /* favourite_off.png */,
@@ -444,6 +447,7 @@
 				5949E7021ACD9013009E2DAB /* favourite_off.png in Resources */,
 				5949E6FD1ACD84E9009E2DAB /* FLGBookTableViewCell.xib in Resources */,
 				5949E7141ACEEED4009E2DAB /* FLGBookViewController~iphone.xib in Resources */,
+				59473A3F1AD1432400F05469 /* Reader.pdf in Resources */,
 				5949E6F81ACCAC1A009E2DAB /* FLGPdfViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

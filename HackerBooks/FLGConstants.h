@@ -37,6 +37,6 @@
 #pragma mark - Colors
 #define FAVOURITE_HEADER_COLOR [UIColor colorWithRed:77/255.0 green:173/255.0 blue:0/255.0 alpha:1.0]
 #define CATHEGORY_HEADER_COLOR [UIColor colorWithRed:80/255.0 green:80/255.0 blue:80/255.0 alpha:1.0]
-#define SELECTED_CELL_BACKGROUND_COLOR [UIColor colorWithRed:235/255.0 green:235/255.0 blue:255/255.0 alpha:1.0]
+#define SELECTED_CELL_BACKGROUND_COLOR [UIColor colorWithRed:235/255.0 green:255/255.0 blue:235/255.0 alpha:1.0]
 
 

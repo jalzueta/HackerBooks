@@ -34,6 +34,18 @@
     return self;
 }
 
+- (void) viewDidLoad{
+    
+    [super viewDidLoad];
+    
+    // Registramos el Nib de la celda personalizada - Lo hago aquí, porque al hacerlo en el viewWillApper, me petaba en la version iPad vertical
+    UINib *nib = [UINib nibWithNibName:@"FLGBookTableViewCell"
+                                bundle:[NSBundle mainBundle]];
+    
+    [self.tableView registerNib:nib
+         forCellReuseIdentifier:[FLGBookTableViewCell cellId]];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -43,13 +55,6 @@
                selector:@selector(notifyThatBookDidChangeItsContent:)
                    name:BOOK_DID_CHANGE_ITS_CONTENT_NOTIFICATION_NAME
                  object:nil];
-    
-    // Registramos el Nig de la celda personalizada
-    UINib *nib = [UINib nibWithNibName:@"FLGBookTableViewCell"
-                                bundle:[NSBundle mainBundle]];
-    
-    [self.tableView registerNib:nib
-         forCellReuseIdentifier:[FLGBookTableViewCell cellId]];
 }
 
 - (void) viewWillDisappear:(BOOL)animated{

@@ -424,6 +424,9 @@
 {
 	CGRect viewRect = CGRectZero; // View rect
 
+    NSString *filePath = [[fileURL absoluteString] stringByReplacingOccurrencesOfString:@"file:///file:" withString:@"file://"];
+    fileURL = [NSURL URLWithString:filePath];
+    
 	if (fileURL != nil) // Check for non-nil file URL
 	{
 		_PDFDocRef = CGPDFDocumentCreateUsingUrl((__bridge CFURLRef)fileURL, phrase);

@@ -932,4 +932,9 @@
 //        }
     }
 }
+
+- (void) archiveDocumentProperties{
+    [self.document archiveDocumentProperties];
+}
+
 @end

@@ -52,6 +52,10 @@
 //    NSString *file = [[NSBundle mainBundle] pathForResource:@"Reader" ofType:@"pdf"];
 //    NSString *file = [[FLGSandboxUtils applicationDocumentsURLForFileName:[self.model.pdfURL lastPathComponent]] absoluteString];
     
+    UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    activity.center = self.view.center;
+    [self.view addSubview:activity];
+    [activity startAnimating];
     
     dispatch_queue_t pdf_download_and_save = dispatch_queue_create("pdf", 0);
     
@@ -64,7 +68,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString *fileName = [pdfURL lastPathComponent];
             
-            ReaderDocument *document = [ReaderDocument withDocumentFileName:fileName password:@"password"];
+            ReaderDocument *document = [ReaderDocument withDocumentFileName:fileName password:nil];
             if (document != nil) {
                 self.readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
                 [self.navigationController pushViewController:self.readerViewController animated:YES];
@@ -73,6 +77,15 @@
             }
         });
     });
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    // Nos damos de baja de las notificaciones
+//    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+//    [center removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -106,6 +119,8 @@
 
 - (void) syncViewToModel{
 
+    [self.readerViewController archiveDocumentProperties];
+    
     dispatch_queue_t pdf_download_and_save = dispatch_queue_create("pdf", 0);
     
     dispatch_async(pdf_download_and_save, ^{
@@ -117,7 +132,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             NSString *fileName = [pdfURL lastPathComponent];
             
-            ReaderDocument *document = [ReaderDocument withDocumentFileName:fileName password:@"password"];
+            ReaderDocument *document = [ReaderDocument withDocumentFileName:fileName password:nil];
             if (document != nil) {
                 [self.readerViewController updateReaderWithDocument: document];
             }

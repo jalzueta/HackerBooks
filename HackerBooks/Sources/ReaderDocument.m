@@ -194,6 +194,8 @@
 {
 	if ((self = [super init])) // Initialize superclass first
 	{
+        NSRange range = [filePath rangeOfString:@"file://"];
+        filePath = [filePath substringFromIndex:(range.location+range.length)];
 		if ([ReaderDocument isPDF:filePath] == YES) // Valid PDF
 		{
 			_guid = [ReaderDocument GUID]; // Create document's GUID

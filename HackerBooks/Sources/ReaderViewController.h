@@ -46,5 +46,6 @@
 
 #pragma mark - HackerBooks
 - (void) updateReaderWithDocument: (ReaderDocument *) document;
+- (void) archiveDocumentProperties;
 
 @end

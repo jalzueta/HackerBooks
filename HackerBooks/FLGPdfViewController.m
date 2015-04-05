@@ -56,6 +56,15 @@
     [self syncViewToModel];
 }
 
+- (void) viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    // Nos damos de baja de las notificaciones
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

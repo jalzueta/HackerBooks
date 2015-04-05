@@ -64,7 +64,7 @@
 
 - (void) dealloc{
     
-    // Nos damos de baja de las notificaciones
+    // Nos damos de baja de las notificaciones - Utilizo el dealloc para que en la versión de iPhone, al volver atrás, también se actualice la lista de libros
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self];
 }

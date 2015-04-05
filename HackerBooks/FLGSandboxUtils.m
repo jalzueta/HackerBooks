@@ -108,20 +108,19 @@
     // Gestion de errores
     NSError *err;
     
-    // Descarga de la imagen desde servidor
-    NSData *data = [NSData dataWithContentsOfURL:remoteUrl];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:remoteUrl];
-//    NSURLResponse *response = [[NSURLResponse alloc] init];
-//    NSError *error;
-//    NSData *data = [NSURLConnection sendSynchronousRequest:request
-//                                         returningResponse:&response
-//                                                     error:&error];
+    // Descarga el fichero desde servidor
+//    NSData *data = [NSData dataWithContentsOfURL:remoteUrl];
+    NSURLRequest *request = [NSURLRequest requestWithURL:remoteUrl];
+    NSURLResponse *response = [[NSURLResponse alloc] init];
+    NSError *error;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request
+                                         returningResponse:&response
+                                                     error:&error];
     
-    // Guarda la imagen en Documents
+    // Guarda el fichero en Documents
     NSURL *localURL = [self applicationDocumentsURLForFileName:fileName];
     BOOL rc = [data writeToURL:localURL
-                          options:NSDataWritingAtomic
-                            error:&err];
+                    atomically:YES];
     
     if (rc) {
         // Guardado sin errores

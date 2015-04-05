@@ -32,6 +32,9 @@
     // Asegurarse de que no se ocupa toda la pantalla cuando se esta en un combinador
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    // Configuro la vista de inicio
+    [self configView];
+    
     // Sincronizo modelo -> vista(s)
     [self syncViewToModel];
     
@@ -90,6 +93,15 @@
 }
 
 #pragma mark - Utils
+- (void) configView{
+    self.bookImage.layer.shadowColor = [UIColor whiteColor].CGColor;
+    self.bookImage.layer.masksToBounds = NO;
+    self.bookImage.layer.shadowOffset = CGSizeMake(5, 5);
+    self.bookImage.layer.shadowOpacity = 0.5;
+    
+    self.bookDataView.backgroundColor = SELECTED_CELL_BACKGROUND_COLOR;
+}
+
 - (void) syncViewToModel{
     self.title = self.model.title;
     
@@ -100,13 +112,6 @@
     self.tags.text = [NSString stringWithFormat:@"Tags: %@", [self.model tagsAsString]];
     self.savedOnDiskImage.hidden = !self.model.savedInLocal;
     [self syncFavouriteValue];
-    
-    self.bookImage.layer.shadowColor = [UIColor whiteColor].CGColor;
-    self.bookImage.layer.masksToBounds = NO;
-    self.bookImage.layer.shadowOffset = CGSizeMake(5, 5);
-    self.bookImage.layer.shadowOpacity = 0.5;
-    
-    self.bookDataView.backgroundColor = SELECTED_CELL_BACKGROUND_COLOR;
 }
 
 - (void) syncFavouriteValue{

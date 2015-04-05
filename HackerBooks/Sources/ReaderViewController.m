@@ -40,7 +40,7 @@
 
 @implementation ReaderViewController
 {
-	ReaderDocument *document;
+//	ReaderDocument *document;
 
 	UIScrollView *theScrollView;
 
@@ -120,7 +120,7 @@
 		scrollView.contentOffset = contentOffset; // Update content offset
 	}
 
-	[mainToolbar setBookmarkState:[document.bookmarks containsIndex:page]];
+	[mainToolbar setBookmarkState:[self.document.bookmarks containsIndex:page]];
 
 	[mainPagebar updatePagebar]; // Update page bar
 }
@@ -131,10 +131,10 @@
 
 	viewRect.origin.x = (viewRect.size.width * (page - 1)); viewRect = CGRectInset(viewRect, scrollViewOutset, 0.0f);
 
-    NSRange range = [[document.fileURL absoluteString] rangeOfString:@".pdf"];
-    NSURL *fileURL = [NSURL URLWithString:[[document.fileURL absoluteString] substringToIndex:(range.location + range.length)]];
-    NSString *phrase = document.password;
-    NSString *guid = document.guid; // Document properties
+    NSRange range = [[self.document.fileURL absoluteString] rangeOfString:@".pdf"];
+    NSURL *fileURL = [NSURL URLWithString:[[self.document.fileURL absoluteString] substringToIndex:(range.location + range.length)]];
+    NSString *phrase = self.document.password;
+    NSString *guid = self.document.guid; // Document properties
 
 	ReaderContentView *contentView = [[ReaderContentView alloc] initWithFrame:viewRect fileURL:fileURL page:page password:phrase]; // ReaderContentView
 
@@ -215,7 +215,7 @@
 
 	if (page != currentPage) // Only if on different page
 	{
-		currentPage = page; document.pageNumber = [NSNumber numberWithInteger:page];
+		currentPage = page; self.document.pageNumber = [NSNumber numberWithInteger:page];
 
 		[contentViews enumerateKeysAndObjectsUsingBlock: // Enumerate content views
 			^(NSNumber *key, ReaderContentView *contentView, BOOL *stop)
@@ -224,7 +224,7 @@
 			}
 		];
 
-		[mainToolbar setBookmarkState:[document.bookmarks containsIndex:page]];
+		[mainToolbar setBookmarkState:[self.document.bookmarks containsIndex:page]];
 
 		[mainPagebar updatePagebar]; // Update page bar
 	}
@@ -236,7 +236,7 @@
 	{
 		if ((page < minimumPage) || (page > maximumPage)) return;
 
-		currentPage = page; document.pageNumber = [NSNumber numberWithInteger:page];
+		currentPage = page; self.document.pageNumber = [NSNumber numberWithInteger:page];
 
 		CGPoint contentOffset = CGPointMake((theScrollView.bounds.size.width * (page - 1)), 0.0f);
 
@@ -252,7 +252,7 @@
 			}
 		];
 
-		[mainToolbar setBookmarkState:[document.bookmarks containsIndex:page]];
+		[mainToolbar setBookmarkState:[self.document.bookmarks containsIndex:page]];
 
 		[mainPagebar updatePagebar]; // Update page bar
 	}
@@ -262,18 +262,18 @@
 {
 	[self updateContentSize:theScrollView]; // Update content size first
 
-	[self showDocumentPage:[document.pageNumber integerValue]]; // Show page
+	[self showDocumentPage:[self.document.pageNumber integerValue]]; // Show page
 
-	document.lastOpen = [NSDate date]; // Update document last opened date
+	self.document.lastOpen = [NSDate date]; // Update document last opened date
 }
 
 - (void)closeDocument
 {
 	if (printInteraction != nil) [printInteraction dismissAnimated:NO];
 
-	[document archiveDocumentProperties]; // Save any ReaderDocument changes
+	[self.document archiveDocumentProperties]; // Save any ReaderDocument changes
 
-	[[ReaderThumbQueue sharedInstance] cancelOperationsWithGUID:document.guid];
+	[[ReaderThumbQueue sharedInstance] cancelOperationsWithGUID:self.document.guid];
 
 	[[ReaderThumbCache sharedInstance] removeAllObjects]; // Empty the thumb cache
 
@@ -305,7 +305,7 @@
 
 			scrollViewOutset = ((userInterfaceIdiom == UIUserInterfaceIdiomPad) ? SCROLLVIEW_OUTSET_LARGE : SCROLLVIEW_OUTSET_SMALL);
 
-			[object updateDocumentProperties]; document = object; // Retain the supplied ReaderDocument object for our use
+			[object updateDocumentProperties]; self.document = object; // Retain the supplied ReaderDocument object for our use
 
 			[ReaderThumbCache touchThumbCacheWithGUID:object.guid]; // Touch the document thumb cache directory
 		}
@@ -327,7 +327,7 @@
 {
 	[super viewDidLoad];
 
-	assert(document != nil); // Must have a valid ReaderDocument
+	assert(self.document != nil); // Must have a valid ReaderDocument
 
 	self.view.backgroundColor = [UIColor grayColor]; // Neutral gray
 
@@ -358,13 +358,13 @@
 	[self.view addSubview:theScrollView];
 
 	CGRect toolbarRect = viewRect; toolbarRect.size.height = TOOLBAR_HEIGHT;
-	mainToolbar = [[ReaderMainToolbar alloc] initWithFrame:toolbarRect document:document]; // ReaderMainToolbar
+	mainToolbar = [[ReaderMainToolbar alloc] initWithFrame:toolbarRect document:self.document]; // ReaderMainToolbar
 	mainToolbar.delegate = self; // ReaderMainToolbarDelegate
 	[self.view addSubview:mainToolbar];
 
 	CGRect pagebarRect = self.view.bounds; pagebarRect.size.height = PAGEBAR_HEIGHT;
 	pagebarRect.origin.y = (self.view.bounds.size.height - pagebarRect.size.height);
-	mainPagebar = [[ReaderMainPagebar alloc] initWithFrame:pagebarRect document:document]; // ReaderMainPagebar
+	mainPagebar = [[ReaderMainPagebar alloc] initWithFrame:pagebarRect document:self.document]; // ReaderMainPagebar
 	mainPagebar.delegate = self; // ReaderMainPagebarDelegate
 	[self.view addSubview:mainPagebar];
 
@@ -386,13 +386,15 @@
 
 	contentViews = [NSMutableDictionary new]; lastHideTime = [NSDate date];
 
-	minimumPage = 1; maximumPage = [document.pageCount integerValue];
+	minimumPage = 1; maximumPage = [self.document.pageCount integerValue];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
 	if (CGSizeEqualToSize(lastAppearSize, CGSizeZero) == false)
 	{
 		if (CGSizeEqualToSize(lastAppearSize, self.view.bounds.size) == false)
@@ -728,7 +730,7 @@
 
 	if (printInteraction != nil) [printInteraction dismissAnimated:NO];
 
-	ThumbsViewController *thumbsViewController = [[ThumbsViewController alloc] initWithReaderDocument:document];
+	ThumbsViewController *thumbsViewController = [[ThumbsViewController alloc] initWithReaderDocument:self.document];
 
 	thumbsViewController.title = self.title; thumbsViewController.delegate = self; // ThumbsViewControllerDelegate
 
@@ -744,7 +746,7 @@
 {
 	if (printInteraction != nil) [printInteraction dismissAnimated:YES];
 
-	NSURL *fileURL = document.fileURL; // Document file URL
+	NSURL *fileURL = self.document.fileURL; // Document file URL
 
 	documentInteraction = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
 
@@ -757,7 +759,7 @@
 {
 	if ([UIPrintInteractionController isPrintingAvailable] == YES)
 	{
-		NSURL *fileURL = document.fileURL; // Document file URL
+		NSURL *fileURL = self.document.fileURL; // Document file URL
 
 		if ([UIPrintInteractionController canPrintURL:fileURL] == YES)
 		{
@@ -766,7 +768,7 @@
 			UIPrintInfo *printInfo = [UIPrintInfo printInfo];
 			printInfo.duplex = UIPrintInfoDuplexLongEdge;
 			printInfo.outputType = UIPrintInfoOutputGeneral;
-			printInfo.jobName = document.fileName;
+			printInfo.jobName = self.document.fileName;
 
 			printInteraction.printInfo = printInfo;
 			printInteraction.printingItem = fileURL;
@@ -804,11 +806,11 @@
 
 	if (printInteraction != nil) [printInteraction dismissAnimated:YES];
 
-	unsigned long long fileSize = [document.fileSize unsignedLongLongValue];
+	unsigned long long fileSize = [self.document.fileSize unsignedLongLongValue];
 
 	if (fileSize < 15728640ull) // Check attachment size limit (15MB)
 	{
-		NSURL *fileURL = document.fileURL; NSString *fileName = document.fileName;
+		NSURL *fileURL = self.document.fileURL; NSString *fileName = self.document.fileName;
 
 		NSData *attachment = [NSData dataWithContentsOfURL:fileURL options:(NSDataReadingMapped|NSDataReadingUncached) error:nil];
 
@@ -836,13 +838,13 @@
 
 	if (printInteraction != nil) [printInteraction dismissAnimated:YES];
 
-	if ([document.bookmarks containsIndex:currentPage]) // Remove bookmark
+	if ([self.document.bookmarks containsIndex:currentPage]) // Remove bookmark
 	{
-		[document.bookmarks removeIndex:currentPage]; [mainToolbar setBookmarkState:NO];
+		[self.document.bookmarks removeIndex:currentPage]; [mainToolbar setBookmarkState:NO];
 	}
 	else // Add the bookmarked page number to the bookmark index set
 	{
-		[document.bookmarks addIndex:currentPage]; [mainToolbar setBookmarkState:YES];
+		[self.document.bookmarks addIndex:currentPage]; [mainToolbar setBookmarkState:YES];
 	}
 
 #endif // end of READER_BOOKMARKS Option
@@ -897,7 +899,7 @@
 
 - (void)applicationWillResign:(NSNotification *)notification
 {
-	[document archiveDocumentProperties]; // Save any ReaderDocument changes
+	[self.document archiveDocumentProperties]; // Save any ReaderDocument changes
 
 	if (userInterfaceIdiom == UIUserInterfaceIdiomPad) if (printInteraction != nil) [printInteraction dismissAnimated:NO];
 }

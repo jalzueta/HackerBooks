@@ -29,6 +29,22 @@
 		59473A3A1AD13F1E00F05469 /* UIXToolbarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59473A261AD13F1E00F05469 /* UIXToolbarView.m */; };
 		59473A3D1AD13F2D00F05469 /* FLGVfrReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59473A3C1AD13F2D00F05469 /* FLGVfrReaderViewController.m */; };
 		59473A3F1AD1432400F05469 /* Reader.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 59473A3E1AD1432400F05469 /* Reader.pdf */; };
+		59473A511AD147E200F05469 /* Reader-Button-H.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A411AD147E200F05469 /* Reader-Button-H.png */; };
+		59473A521AD147E200F05469 /* Reader-Button-H@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A421AD147E200F05469 /* Reader-Button-H@2x.png */; };
+		59473A531AD147E200F05469 /* Reader-Button-N.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A431AD147E200F05469 /* Reader-Button-N.png */; };
+		59473A541AD147E200F05469 /* Reader-Button-N@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A441AD147E200F05469 /* Reader-Button-N@2x.png */; };
+		59473A551AD147E200F05469 /* Reader-Email.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A451AD147E200F05469 /* Reader-Email.png */; };
+		59473A561AD147E200F05469 /* Reader-Email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A461AD147E200F05469 /* Reader-Email@2x.png */; };
+		59473A571AD147E200F05469 /* Reader-Export.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A471AD147E200F05469 /* Reader-Export.png */; };
+		59473A581AD147E200F05469 /* Reader-Export@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A481AD147E200F05469 /* Reader-Export@2x.png */; };
+		59473A591AD147E200F05469 /* Reader-Mark-N.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A491AD147E200F05469 /* Reader-Mark-N.png */; };
+		59473A5A1AD147E200F05469 /* Reader-Mark-N@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A4A1AD147E200F05469 /* Reader-Mark-N@2x.png */; };
+		59473A5B1AD147E200F05469 /* Reader-Mark-Y.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A4B1AD147E200F05469 /* Reader-Mark-Y.png */; };
+		59473A5C1AD147E200F05469 /* Reader-Mark-Y@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A4C1AD147E200F05469 /* Reader-Mark-Y@2x.png */; };
+		59473A5D1AD147E200F05469 /* Reader-Print.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A4D1AD147E200F05469 /* Reader-Print.png */; };
+		59473A5E1AD147E200F05469 /* Reader-Print@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A4E1AD147E200F05469 /* Reader-Print@2x.png */; };
+		59473A5F1AD147E200F05469 /* Reader-Thumbs.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A4F1AD147E200F05469 /* Reader-Thumbs.png */; };
+		59473A601AD147E200F05469 /* Reader-Thumbs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A501AD147E200F05469 /* Reader-Thumbs@2x.png */; };
 		5949E6F71ACCAC1A009E2DAB /* FLGPdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5949E6F51ACCAC1A009E2DAB /* FLGPdfViewController.m */; };
 		5949E6F81ACCAC1A009E2DAB /* FLGPdfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5949E6F61ACCAC1A009E2DAB /* FLGPdfViewController.xib */; };
 		5949E6FC1ACD84E9009E2DAB /* FLGBookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5949E6FA1ACD84E9009E2DAB /* FLGBookTableViewCell.m */; };
@@ -110,6 +126,22 @@
 		59473A3B1AD13F2D00F05469 /* FLGVfrReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGVfrReaderViewController.h; sourceTree = "<group>"; };
 		59473A3C1AD13F2D00F05469 /* FLGVfrReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGVfrReaderViewController.m; sourceTree = "<group>"; };
 		59473A3E1AD1432400F05469 /* Reader.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Reader.pdf; sourceTree = "<group>"; };
+		59473A411AD147E200F05469 /* Reader-Button-H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Button-H.png"; sourceTree = "<group>"; };
+		59473A421AD147E200F05469 /* Reader-Button-H@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Button-H@2x.png"; sourceTree = "<group>"; };
+		59473A431AD147E200F05469 /* Reader-Button-N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Button-N.png"; sourceTree = "<group>"; };
+		59473A441AD147E200F05469 /* Reader-Button-N@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Button-N@2x.png"; sourceTree = "<group>"; };
+		59473A451AD147E200F05469 /* Reader-Email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Email.png"; sourceTree = "<group>"; };
+		59473A461AD147E200F05469 /* Reader-Email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Email@2x.png"; sourceTree = "<group>"; };
+		59473A471AD147E200F05469 /* Reader-Export.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Export.png"; sourceTree = "<group>"; };
+		59473A481AD147E200F05469 /* Reader-Export@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Export@2x.png"; sourceTree = "<group>"; };
+		59473A491AD147E200F05469 /* Reader-Mark-N.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Mark-N.png"; sourceTree = "<group>"; };
+		59473A4A1AD147E200F05469 /* Reader-Mark-N@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Mark-N@2x.png"; sourceTree = "<group>"; };
+		59473A4B1AD147E200F05469 /* Reader-Mark-Y.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Mark-Y.png"; sourceTree = "<group>"; };
+		59473A4C1AD147E200F05469 /* Reader-Mark-Y@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Mark-Y@2x.png"; sourceTree = "<group>"; };
+		59473A4D1AD147E200F05469 /* Reader-Print.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Print.png"; sourceTree = "<group>"; };
+		59473A4E1AD147E200F05469 /* Reader-Print@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Print@2x.png"; sourceTree = "<group>"; };
+		59473A4F1AD147E200F05469 /* Reader-Thumbs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs.png"; sourceTree = "<group>"; };
+		59473A501AD147E200F05469 /* Reader-Thumbs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs@2x.png"; sourceTree = "<group>"; };
 		5949E6F41ACCAC1A009E2DAB /* FLGPdfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGPdfViewController.h; sourceTree = "<group>"; };
 		5949E6F51ACCAC1A009E2DAB /* FLGPdfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGPdfViewController.m; sourceTree = "<group>"; };
 		5949E6F61ACCAC1A009E2DAB /* FLGPdfViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLGPdfViewController.xib; sourceTree = "<group>"; };
@@ -216,6 +248,29 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		59473A401AD147D800F05469 /* vfrReader */ = {
+			isa = PBXGroup;
+			children = (
+				59473A411AD147E200F05469 /* Reader-Button-H.png */,
+				59473A421AD147E200F05469 /* Reader-Button-H@2x.png */,
+				59473A431AD147E200F05469 /* Reader-Button-N.png */,
+				59473A441AD147E200F05469 /* Reader-Button-N@2x.png */,
+				59473A451AD147E200F05469 /* Reader-Email.png */,
+				59473A461AD147E200F05469 /* Reader-Email@2x.png */,
+				59473A471AD147E200F05469 /* Reader-Export.png */,
+				59473A481AD147E200F05469 /* Reader-Export@2x.png */,
+				59473A491AD147E200F05469 /* Reader-Mark-N.png */,
+				59473A4A1AD147E200F05469 /* Reader-Mark-N@2x.png */,
+				59473A4B1AD147E200F05469 /* Reader-Mark-Y.png */,
+				59473A4C1AD147E200F05469 /* Reader-Mark-Y@2x.png */,
+				59473A4D1AD147E200F05469 /* Reader-Print.png */,
+				59473A4E1AD147E200F05469 /* Reader-Print@2x.png */,
+				59473A4F1AD147E200F05469 /* Reader-Thumbs.png */,
+				59473A501AD147E200F05469 /* Reader-Thumbs@2x.png */,
+			);
+			name = vfrReader;
+			sourceTree = "<group>";
+		};
 		5949E6FE1ACD84F5009E2DAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				59473A3E1AD1432400F05469 /* Reader.pdf */,
+				59473A401AD147D800F05469 /* vfrReader */,
 				5949E7151ACF221E009E2DAB /* saved_on.png */,
 				5949E7191ACF23E7009E2DAB /* saved_icon.png */,
 				5949E7001ACD9013009E2DAB /* favourite_off.png */,
@@ -434,20 +490,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59473A5D1AD147E200F05469 /* Reader-Print.png in Resources */,
 				59FDD5A91AC99B5B0062037B /* LaunchScreen.xib in Resources */,
 				5949E7031ACD9013009E2DAB /* favourite_on.png in Resources */,
+				59473A591AD147E200F05469 /* Reader-Mark-N.png in Resources */,
+				59473A571AD147E200F05469 /* Reader-Export.png in Resources */,
 				5949E71C1ACF23E7009E2DAB /* saved_icon.png in Resources */,
+				59473A581AD147E200F05469 /* Reader-Export@2x.png in Resources */,
+				59473A561AD147E200F05469 /* Reader-Email@2x.png in Resources */,
+				59473A5B1AD147E200F05469 /* Reader-Mark-Y.png in Resources */,
 				5949E70C1ACD94D7009E2DAB /* open_pdf.png in Resources */,
+				59473A5C1AD147E200F05469 /* Reader-Mark-Y@2x.png in Resources */,
+				59473A5F1AD147E200F05469 /* Reader-Thumbs.png in Resources */,
 				5949E7161ACF221E009E2DAB /* saved_on.png in Resources */,
+				59473A601AD147E200F05469 /* Reader-Thumbs@2x.png in Resources */,
 				5949E71A1ACF23E7009E2DAB /* favourite_icon_off.png in Resources */,
 				59FDD5A61AC99B5B0062037B /* Images.xcassets in Resources */,
+				59473A551AD147E200F05469 /* Reader-Email.png in Resources */,
+				59473A511AD147E200F05469 /* Reader-Button-H.png in Resources */,
 				5993FCEF1ACC99ED00273B61 /* FLGBookViewController.xib in Resources */,
+				59473A531AD147E200F05469 /* Reader-Button-N.png in Resources */,
 				5949E70D1ACD94D7009E2DAB /* open_pdf@2x.png in Resources */,
 				5949E71B1ACF23E7009E2DAB /* favourite_icon_on.png in Resources */,
 				5949E7021ACD9013009E2DAB /* favourite_off.png in Resources */,
+				59473A541AD147E200F05469 /* Reader-Button-N@2x.png in Resources */,
+				59473A521AD147E200F05469 /* Reader-Button-H@2x.png in Resources */,
 				5949E6FD1ACD84E9009E2DAB /* FLGBookTableViewCell.xib in Resources */,
 				5949E7141ACEEED4009E2DAB /* FLGBookViewController~iphone.xib in Resources */,
 				59473A3F1AD1432400F05469 /* Reader.pdf in Resources */,
+				59473A5A1AD147E200F05469 /* Reader-Mark-N@2x.png in Resources */,
+				59473A5E1AD147E200F05469 /* Reader-Print@2x.png in Resources */,
 				5949E6F81ACCAC1A009E2DAB /* FLGPdfViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,6 +13,7 @@
 @interface FLGVfrReaderViewController : UIViewController<ReaderViewControllerDelegate>
 
 @property (strong, nonatomic) FLGBook *model;
+@property (strong, nonatomic) ReaderViewController *readerViewController;
 
 - (id) initWithModel: (FLGBook *) model;
 

@@ -53,9 +53,10 @@
     ReaderDocument *document = [ReaderDocument withDocumentFilePath:file password:@"password"];
     if (document != nil)
     {
-        ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
-        [self.navigationController pushViewController:readerViewController animated:YES];
-        readerViewController.delegate = self;
+        self.readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
+        [self.navigationController pushViewController:self.readerViewController animated:YES];
+//        [self presentViewController:readerViewController animated:YES completion:nil];
+        self.readerViewController.delegate = self;
     }
 }
 
@@ -69,7 +70,6 @@
 - (void) notifyThatBookDidChange: (NSNotification *) aNotification{
     
     // Sacamos el personaje
-    // no usar "valueForKey", ya que eso es para KVC. Para diccionarios se usa "objectForKey"
     FLGBook *book = [aNotification.userInfo objectForKey:BOOK_KEY];
     
     // Actualizamos el modelo
@@ -81,14 +81,23 @@
 
 #pragma mark - ReaderViewControllerDelegate
 - (void) dismissReaderViewController:(ReaderViewController *)viewController{
+    
+    // si se ha usado "PushVC"
     [self.navigationController popViewControllerAnimated:YES];
+    
+    // si se ha usado "ModalVC"
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 #pragma mark - Utils
 
 - (void) syncViewToModel{
+    NSString *file = [[NSBundle mainBundle] pathForResource:@"Reader" ofType:@"pdf"];
+//    NSString *file = [[FLGSandboxUtils applicationDocumentsURLForFileName:@"Reader.pdf"] absoluteString];
     
+    ReaderDocument *document = [ReaderDocument withDocumentFilePath:file password:@"password"];
+    self.readerViewController.document = document;
 }
 
 @end

@@ -70,6 +70,7 @@
     FLGVfrReaderViewController *vfrVC = [[FLGVfrReaderViewController alloc] initWithModel:self.model];
     
     // Hacer un push usando la propiedad "navigationController" que tiene todo UIViewController
+//    [self presentViewController:vfrVC animated:YES completion:nil];
     [self.navigationController pushViewController:vfrVC animated:YES];
 }
 

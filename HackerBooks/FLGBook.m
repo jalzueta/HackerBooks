@@ -127,7 +127,6 @@
 
 - (void) downloadAndSavePdf{
     
-//    [FLGSandboxUtils downloadAndSavePdfForBook:self];
     NSURL *newPdfURL = [FLGSandboxUtils downloadAndSaveFileWithUrl:self.pdfURL];
     if (newPdfURL != self.pdfURL) {
         self.savedInLocal = YES;

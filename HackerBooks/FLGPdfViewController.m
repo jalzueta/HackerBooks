@@ -122,11 +122,22 @@
     
     self.browser.delegate = self;
     
-    NSURL *pdfURL = [self.model localPdfURL];
-    [self.browser loadData:[NSData dataWithContentsOfURL:pdfURL]
-                  MIMEType:@"application/pdf"
-          textEncodingName:@"UTF-8"
-                   baseURL:nil];
+    // crear una cola
+    dispatch_queue_t pdf_download_and_save = dispatch_queue_create("pdf", 0);
+    
+    dispatch_async(pdf_download_and_save, ^{
+        
+        // Es el propio modelo "FLGBook" el que se encarga de hacer la descarga del pdf, si es necesario
+        NSURL *pdfURL = [self.model localPdfURL];
+        
+        // se ejecuta en primer plano
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.browser loadData:[NSData dataWithContentsOfURL:pdfURL]
+                          MIMEType:@"application/pdf"
+                  textEncodingName:@"UTF-8"
+                           baseURL:nil];
+        });
+    });
 }
 
 @end

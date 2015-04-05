@@ -395,6 +395,14 @@
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    UIBarButtonItem *btnItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                style:UIBarButtonItemStylePlain
+                                                               target:self
+                                                               action:@selector(didPressBack:)];
+    
+    self.navigationItem.backBarButtonItem = nil;
+    self.navigationItem.leftBarButtonItem = btnItem;
+    
 	if (CGSizeEqualToSize(lastAppearSize, CGSizeZero) == false)
 	{
 		if (CGSizeEqualToSize(lastAppearSize, self.view.bounds.size) == false)
@@ -936,5 +944,11 @@
 - (void) archiveDocumentProperties{
     [self.document archiveDocumentProperties];
 }
+
+
+- (void) didPressBack: (UIBarButtonItem *) sender{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 
 @end

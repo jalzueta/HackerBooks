@@ -114,7 +114,6 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-
 #pragma mark - Utils
 
 - (void) syncViewToModel{

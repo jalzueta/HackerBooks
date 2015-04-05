@@ -9,6 +9,8 @@
 #import "FLGVfrReaderViewController.h"
 #import "FLGBook.h"
 #import "FLGConstants.h"
+#import "FLGSandboxUtils.h"
+#import "ReaderDocument+FLGHackerBooks.h"
 
 @interface FLGVfrReaderViewController ()
 
@@ -45,19 +47,32 @@
     [center addObserver:self
                selector:@selector(notifyThatBookDidChange:)
                    name:BOOK_DID_CHANGE_NOTIFICATION_NAME
-                 object:nil]; // Quien es el sender de la notificacion: en este caso no da igual
+                 object:nil];
     
-    NSString *file = [[NSBundle mainBundle] pathForResource:@"Reader" ofType:@"pdf"];
-//    NSString *file = [[FLGSandboxUtils applicationDocumentsURLForFileName:@"Reader.pdf"] absoluteString];
+//    NSString *file = [[NSBundle mainBundle] pathForResource:@"Reader" ofType:@"pdf"];
+//    NSString *file = [[FLGSandboxUtils applicationDocumentsURLForFileName:[self.model.pdfURL lastPathComponent]] absoluteString];
     
-    ReaderDocument *document = [ReaderDocument withDocumentFilePath:file password:@"password"];
-    if (document != nil)
-    {
-        self.readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
-        [self.navigationController pushViewController:self.readerViewController animated:YES];
-//        [self presentViewController:readerViewController animated:YES completion:nil];
-        self.readerViewController.delegate = self;
-    }
+    
+    dispatch_queue_t pdf_download_and_save = dispatch_queue_create("pdf", 0);
+    
+    dispatch_async(pdf_download_and_save, ^{
+        
+        // Es el propio modelo "FLGBook" el que se encarga de hacer la descarga del pdf, si es necesario
+        NSURL *pdfURL = [self.model localPdfURL];
+        
+        // se ejecuta en primer plano
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *fileName = [pdfURL lastPathComponent];
+            
+            ReaderDocument *document = [ReaderDocument withDocumentFileName:fileName password:@"password"];
+            if (document != nil) {
+                self.readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
+                [self.navigationController pushViewController:self.readerViewController animated:YES];
+                //        [self presentViewController:readerViewController animated:YES completion:nil];
+                self.readerViewController.delegate = self;
+            }
+        });
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,21 +98,31 @@
 - (void) dismissReaderViewController:(ReaderViewController *)viewController{
     
     // si se ha usado "PushVC"
-    [self.navigationController popViewControllerAnimated:YES];
-    
-    // si se ha usado "ModalVC"
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
 #pragma mark - Utils
 
 - (void) syncViewToModel{
-    NSString *file = [[NSBundle mainBundle] pathForResource:@"Practica" ofType:@"pdf"];
-//    NSString *file = [[FLGSandboxUtils applicationDocumentsURLForFileName:@"Reader.pdf"] absoluteString];
+
+    dispatch_queue_t pdf_download_and_save = dispatch_queue_create("pdf", 0);
     
-    ReaderDocument *document = [ReaderDocument withDocumentFilePath:file password:@"password"];
-    [self.readerViewController updateReaderWithDocument: document];
+    dispatch_async(pdf_download_and_save, ^{
+        
+        // Es el propio modelo "FLGBook" el que se encarga de hacer la descarga del pdf, si es necesario
+        NSURL *pdfURL = [self.model localPdfURL];
+        
+        // se ejecuta en primer plano
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *fileName = [pdfURL lastPathComponent];
+            
+            ReaderDocument *document = [ReaderDocument withDocumentFileName:fileName password:@"password"];
+            if (document != nil) {
+                [self.readerViewController updateReaderWithDocument: document];
+            }
+        });
+    });
 }
 
 @end

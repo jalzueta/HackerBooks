@@ -46,6 +46,7 @@
 		59473A5F1AD147E200F05469 /* Reader-Thumbs.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A4F1AD147E200F05469 /* Reader-Thumbs.png */; };
 		59473A601AD147E200F05469 /* Reader-Thumbs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59473A501AD147E200F05469 /* Reader-Thumbs@2x.png */; };
 		59473A621AD14A8300F05469 /* Practica.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 59473A611AD14A8300F05469 /* Practica.pdf */; };
+		59473A671AD1BE2A00F05469 /* ReaderDocument+FLGHackerBooks.m in Sources */ = {isa = PBXBuildFile; fileRef = 59473A661AD1BE2A00F05469 /* ReaderDocument+FLGHackerBooks.m */; };
 		5949E6F71ACCAC1A009E2DAB /* FLGPdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5949E6F51ACCAC1A009E2DAB /* FLGPdfViewController.m */; };
 		5949E6F81ACCAC1A009E2DAB /* FLGPdfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5949E6F61ACCAC1A009E2DAB /* FLGPdfViewController.xib */; };
 		5949E6FC1ACD84E9009E2DAB /* FLGBookTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5949E6FA1ACD84E9009E2DAB /* FLGBookTableViewCell.m */; };
@@ -144,6 +145,8 @@
 		59473A4F1AD147E200F05469 /* Reader-Thumbs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs.png"; sourceTree = "<group>"; };
 		59473A501AD147E200F05469 /* Reader-Thumbs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reader-Thumbs@2x.png"; sourceTree = "<group>"; };
 		59473A611AD14A8300F05469 /* Practica.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Practica.pdf; sourceTree = "<group>"; };
+		59473A651AD1BE2A00F05469 /* ReaderDocument+FLGHackerBooks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ReaderDocument+FLGHackerBooks.h"; sourceTree = "<group>"; };
+		59473A661AD1BE2A00F05469 /* ReaderDocument+FLGHackerBooks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ReaderDocument+FLGHackerBooks.m"; sourceTree = "<group>"; };
 		5949E6F41ACCAC1A009E2DAB /* FLGPdfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLGPdfViewController.h; sourceTree = "<group>"; };
 		5949E6F51ACCAC1A009E2DAB /* FLGPdfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLGPdfViewController.m; sourceTree = "<group>"; };
 		5949E6F61ACCAC1A009E2DAB /* FLGPdfViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FLGPdfViewController.xib; sourceTree = "<group>"; };
@@ -273,6 +276,15 @@
 			name = vfrReader;
 			sourceTree = "<group>";
 		};
+		59473A681AD1BE2F00F05469 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				59473A651AD1BE2A00F05469 /* ReaderDocument+FLGHackerBooks.h */,
+				59473A661AD1BE2A00F05469 /* ReaderDocument+FLGHackerBooks.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		5949E6FE1ACD84F5009E2DAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +336,7 @@
 			children = (
 				594739FE1AD13F1E00F05469 /* Sources */,
 				5949E6FF1ACD9003009E2DAB /* Resources */,
+				59473A681AD1BE2F00F05469 /* Categories */,
 				59FDD5A21AC99B5B0062037B /* AppDelegate.h */,
 				59FDD5A31AC99B5B0062037B /* AppDelegate.m */,
 				59FDD5BF1AC99F090062037B /* Settings */,
@@ -570,6 +583,7 @@
 				59473A311AD13F1E00F05469 /* ReaderThumbFetch.m in Sources */,
 				59473A271AD13F1E00F05469 /* CGPDFDocument.m in Sources */,
 				5949E6F71ACCAC1A009E2DAB /* FLGPdfViewController.m in Sources */,
+				59473A671AD1BE2A00F05469 /* ReaderDocument+FLGHackerBooks.m in Sources */,
 				59473A2C1AD13F1E00F05469 /* ReaderDocument.m in Sources */,
 				59FDD5CC1ACA82C60062037B /* FLGJSONUtils.m in Sources */,
 				59FDD5C21AC99F2D0062037B /* FLGBook.m in Sources */,

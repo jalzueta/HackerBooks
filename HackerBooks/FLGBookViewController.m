@@ -109,6 +109,17 @@
     [self syncViewToModel];
 }
 
+- (void) libraryTableViewController:(FLGLibraryTableViewController *)libraryTableViewController didChangeFavoriteStateInBook:(FLGBook *)book{
+    
+    if ([self.model isTheSameBook:book]) {
+        // Actualizamos el modelo
+        self.model = book;
+        
+        // Sincronizamos modelo -> vista
+        [self syncViewToModel];
+    }
+}
+
 #pragma mark - Utils
 - (void) configView{
     self.bookImage.layer.shadowColor = [UIColor whiteColor].CGColor;

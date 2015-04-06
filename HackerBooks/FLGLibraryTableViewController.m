@@ -232,7 +232,7 @@
         [self.tableView reloadData];
         
         //Avisamos a FLGBookViewController de que ha cambiado el libro -> Envio el mensaje al delegado
-        [self.delegate libraryTableViewController:self didSelectBook:book];
+        [self.delegate libraryTableViewController:self didChangeFavoriteStateInBook:book];
     }
 }
 

@@ -15,6 +15,7 @@
 
 @optional
 - (void) libraryTableViewController: (FLGLibraryTableViewController *) libraryTableViewController didSelectBook: (FLGBook *) book;
+- (void) libraryTableViewController: (FLGLibraryTableViewController *) libraryTableViewController didChangeFavoriteStateInBook: (FLGBook *) book;
 
 @end
 
